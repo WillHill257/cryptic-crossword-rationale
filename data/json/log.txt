@@ -1,0 +1,14 @@
+INFO:__main__:Querying data from the DB
+INFO:__main__:Queried 592209 items
+INFO:__main__:Creating random split
+INFO:__main__:Random Split: Train Size      = 355325 of 592209
+INFO:__main__:Random Split: Validation Size = 118442 of 592209
+INFO:__main__:Random Split: Test Size       = 118442 of 592209
+INFO:__main__:Creating naive disjoint split
+INFO:__main__:Naive Disjoint Split: Train Size      = 353630 of 592209
+INFO:__main__:Naive Disjoint Split: Validation Size = 119828 of 592209
+INFO:__main__:Naive Disjoint Split: Test Size       = 118751 of 592209
+INFO:__main__:Creating word-initial disjoint split
+INFO:__main__:Word-Initial Disjoint Split: Train Size      = 367704 of 592209
+INFO:__main__:Word-Initial Disjoint Split: Validation Size = 102801 of 592209
+INFO:__main__:Word-Initial Disjoint Split: Test Size       = 121704 of 592209
