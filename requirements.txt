@@ -1,0 +1,8 @@
+accelerate
+black
+datasets >= 1.8.0
+sentencepiece != 0.1.92
+sacrebleu
+sklearn
+torch >= 1.3
+transformers == 4.21.1

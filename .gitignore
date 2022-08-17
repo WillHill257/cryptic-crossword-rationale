@@ -1,9 +1,17 @@
 __pycache__
+cryptics/models/cache/*
+!cryptics/models/cache/empty
 .DS_Store
-*.json
+/cryptics/data/**/*.json
+
+output/*
+!output/empty
 
 # python virtual env
 env
 
 # databases
 *.sqlite3
+
+# vscode
+.vscode
