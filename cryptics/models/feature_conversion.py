@@ -74,8 +74,8 @@ def decode_for_eval(
     decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
 
     # Some simple post-processing
-    decoded_preds = [pred.strip() for pred in decoded_preds]
-    decoded_labels = [[label.strip()] for label in decoded_labels]
+    decoded_preds = [pred.strip().upper() for pred in decoded_preds]
+    decoded_labels = [label.strip().upper() for label in decoded_labels]
 
     return decoded_preds, decoded_labels
 

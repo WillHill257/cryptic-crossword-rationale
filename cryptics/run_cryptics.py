@@ -3,10 +3,8 @@
 import logging
 import os
 import sys
-from typing import Optional
 
 import datasets
-import numpy as np
 from datasets import load_metric
 
 import transformers
@@ -23,23 +21,33 @@ from transformers import (
 )
 from transformers.trainer_utils import get_last_checkpoint
 from transformers.utils import check_min_version
-from transformers.utils.versions import require_version
 
 from arguments import DataTrainingArguments, ModelArguments
 from models.feature_conversion import decode_features
 from models.metrics import compute_accuracy
 from data.load_data import load_data
 from models.feature_conversion import encode_features, feature_conversion
+from data.format_predictions import format_predictions
 
 # Will error if the minimal version of Transformers is not installed. Remove at your own risks.
 check_min_version("4.21.0")
 
-require_version(
-    "datasets>=1.8.0",
-    "To fix: pip install -r examples/pytorch/translation/requirements.txt",
-)
-
 logger = logging.getLogger(__name__)
+
+
+def determine_experiment(
+    experiment_folder: str, training_args: Seq2SeqTrainingArguments
+):
+    # calculate the new dir
+    new_dir = training_args.output_dir + "/" + experiment_folder
+
+    # make sure slash isn't doubled
+    new_dir = new_dir.replace("//", "/")
+
+    # create the new dir
+    os.makedirs(new_dir)
+
+    return new_dir
 
 
 def main():
@@ -50,14 +58,19 @@ def main():
     parser = HfArgumentParser(
         (ModelArguments, DataTrainingArguments, Seq2SeqTrainingArguments)
     )
-    if len(sys.argv) == 2 and sys.argv[1].endswith(".json"):
+    if len(sys.argv) == 3 and sys.argv[2].endswith(".json"):
         # If we pass only one argument to the script and it's the path to a json file,
         # let's parse it to get our arguments.
         model_args, data_args, training_args = parser.parse_json_file(
-            json_file=os.path.abspath(sys.argv[1])
+            json_file=os.path.abspath(sys.argv[2])
         )
     else:
-        model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+        print(f"Usage: python3 {sys.argv[0]} experiment_folder configuration_file")
+        print(f"Example: python3 {sys.argv[0]} 0001/a configurations/config.json")
+        exit()
+
+    # save the experiment info in a new folder
+    training_args.output_dir = determine_experiment(sys.argv[1], training_args)
 
     # Setup logging
     logging.basicConfig(
@@ -272,9 +285,7 @@ def main():
 
         return preds, labels
 
-    compute_metrics = lambda data: compute_accuracy(
-        data, tokenizer, postprocess_text, data_args
-    )
+    compute_metrics = lambda data: compute_accuracy(data, tokenizer, data_args)
 
     # Initialize our Trainer
     trainer = Seq2SeqTrainer(
@@ -369,19 +380,18 @@ def main():
                 prediction_input["label"] = decode_features(
                     predict_dataset["labels"], tokenizer
                 )
-                predictions = [
-                    prediction_input["input"][i]
-                    + " --- "
-                    + prediction_input["label"][i]
-                    + " --- "
-                    + pred.strip()
-                    for i, pred in enumerate(predictions)
-                ]
+                predictions = [pred.strip() for i, pred in enumerate(predictions)]
                 output_prediction_file = os.path.join(
                     training_args.output_dir, "generated_predictions.txt"
                 )
                 with open(output_prediction_file, "w", encoding="utf-8") as writer:
-                    writer.write("\n".join(predictions))
+                    writer.write(
+                        format_predictions(
+                            prediction_input["input"],
+                            prediction_input["label"],
+                            predictions,
+                        )
+                    )
 
 
 def _mp_fn(index):

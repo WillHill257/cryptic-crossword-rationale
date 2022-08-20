@@ -4,8 +4,10 @@ cryptics/models/cache/*
 .DS_Store
 /cryptics/data/**/*.json
 
-output/*
-!output/empty
+# experiments/*
+# !experiments/empty
+
+*.bin
 
 # python virtual env
 env
