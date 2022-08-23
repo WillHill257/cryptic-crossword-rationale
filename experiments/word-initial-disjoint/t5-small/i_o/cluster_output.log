@@ -1,0 +1,177 @@
+08/22/2022 21:26:07 - WARNING - __main__ - Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
+08/22/2022 21:26:07 - INFO - __main__ - Training/evaluation parameters Seq2SeqTrainingArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+auto_find_batch_size=False,
+bf16=False,
+bf16_full_eval=False,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_pin_memory=True,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+do_eval=True,
+do_predict=True,
+do_train=True,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_steps=None,
+evaluation_strategy=no,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[],
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+generation_max_length=None,
+generation_num_beams=None,
+gradient_accumulation_steps=1,
+gradient_checkpointing=False,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=every_save,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+include_inputs_for_metrics=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=5e-05,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=-1,
+log_level=-1,
+log_level_replica=-1,
+log_on_each_node=True,
+logging_dir=../experiments/runs/Aug22_21-26-05_mscluster48.ms.wits.ac.za,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=5000,
+logging_strategy=steps,
+lr_scheduler_type=linear,
+max_grad_norm=1.0,
+max_steps=-1,
+metric_for_best_model=None,
+mp_parameters=,
+no_cuda=False,
+num_train_epochs=3.0,
+optim=adamw_hf,
+output_dir=../experiments/word-initial-disjoint/i_o,
+overwrite_output_dir=False,
+past_index=-1,
+per_device_eval_batch_size=8,
+per_device_train_batch_size=8,
+predict_with_generate=True,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=[],
+resume_from_checkpoint=None,
+run_name=../experiments/,
+save_on_each_node=False,
+save_steps=5000,
+save_strategy=steps,
+save_total_limit=None,
+seed=42,
+sharded_ddp=[],
+skip_memory_metrics=True,
+sortish_sampler=False,
+tf32=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+warmup_ratio=0.0,
+warmup_steps=0,
+weight_decay=0.0,
+xpu_backend=None,
+)
+08/22/2022 21:26:08 - WARNING - datasets.builder - Using custom data configuration default-3e8b51f1ad3b38da
+08/22/2022 21:26:10 - INFO - datasets.builder - Overwrite dataset info from restored data version.
+08/22/2022 21:26:10 - INFO - datasets.info - Loading Dataset info from ./models/cache/json/default-3e8b51f1ad3b38da/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253
+08/22/2022 21:26:13 - WARNING - datasets.builder - Reusing dataset json (./models/cache/json/default-3e8b51f1ad3b38da/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253)
+08/22/2022 21:26:13 - INFO - datasets.info - Loading Dataset info from ./models/cache/json/default-3e8b51f1ad3b38da/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253
+08/22/2022 21:26:18 - INFO - __main__ - Loaded the word-initial-disjoint dataset:
+DatasetDict({
+    train: Dataset({
+        features: ['clue', 'answer', 'annotation', 'rationale'],
+        num_rows: 367704
+    })
+    validation: Dataset({
+        features: ['clue', 'answer', 'annotation', 'rationale'],
+        num_rows: 102801
+    })
+    test: Dataset({
+        features: ['clue', 'answer', 'annotation', 'rationale'],
+        num_rows: 121704
+    })
+})
+{'loss': 3.8691, 'learning_rate': 4.8186947472242166e-05, 'epoch': 0.11}
+{'loss': 3.5255, 'learning_rate': 4.6373894944484335e-05, 'epoch': 0.22}
+{'loss': 3.4018, 'learning_rate': 4.45608424167265e-05, 'epoch': 0.33}
+{'loss': 3.2937, 'learning_rate': 4.274778988896866e-05, 'epoch': 0.44}
+{'loss': 3.2304, 'learning_rate': 4.093473736121083e-05, 'epoch': 0.54}
+{'loss': 3.1751, 'learning_rate': 3.9121684833453e-05, 'epoch': 0.65}
+{'loss': 3.1311, 'learning_rate': 3.7308632305695164e-05, 'epoch': 0.76}
+{'loss': 3.0768, 'learning_rate': 3.549557977793733e-05, 'epoch': 0.87}
+{'loss': 3.0463, 'learning_rate': 3.36825272501795e-05, 'epoch': 0.98}
+{'loss': 2.9914, 'learning_rate': 3.186947472242166e-05, 'epoch': 1.09}
+{'loss': 2.9534, 'learning_rate': 3.0056422194663824e-05, 'epoch': 1.2}
+{'loss': 2.9304, 'learning_rate': 2.824336966690599e-05, 'epoch': 1.31}
+{'loss': 2.9053, 'learning_rate': 2.643031713914816e-05, 'epoch': 1.41}
+{'loss': 2.886, 'learning_rate': 2.4617264611390323e-05, 'epoch': 1.52}
+{'loss': 2.8705, 'learning_rate': 2.2804212083632486e-05, 'epoch': 1.63}
+{'loss': 2.8408, 'learning_rate': 2.0991159555874653e-05, 'epoch': 1.74}
+{'loss': 2.8303, 'learning_rate': 1.917810702811682e-05, 'epoch': 1.85}
+{'loss': 2.8137, 'learning_rate': 1.7365054500358986e-05, 'epoch': 1.96}
+{'loss': 2.7903, 'learning_rate': 1.5552001972601152e-05, 'epoch': 2.07}
+{'loss': 2.7742, 'learning_rate': 1.3738949444843315e-05, 'epoch': 2.18}
+{'loss': 2.7538, 'learning_rate': 1.1925896917085484e-05, 'epoch': 2.28}
+{'loss': 2.7545, 'learning_rate': 1.0112844389327648e-05, 'epoch': 2.39}
+{'loss': 2.7566, 'learning_rate': 8.299791861569813e-06, 'epoch': 2.5}
+{'loss': 2.7538, 'learning_rate': 6.48673933381198e-06, 'epoch': 2.61}
+{'loss': 2.737, 'learning_rate': 4.673686806054145e-06, 'epoch': 2.72}
+{'loss': 2.7349, 'learning_rate': 2.860634278296311e-06, 'epoch': 2.83}
+{'loss': 2.7341, 'learning_rate': 1.0475817505384766e-06, 'epoch': 2.94}
+{'train_runtime': 9161.0075, 'train_samples_per_second': 120.414, 'train_steps_per_second': 15.052, 'train_loss': 2.9783436505937293, 'epoch': 3.0}
+***** train metrics *****
+  epoch                    =        3.0
+  train_loss               =     2.9783
+  train_runtime            = 2:32:41.00
+  train_samples            =     367704
+  train_samples_per_second =    120.414
+  train_steps_per_second   =     15.052
+08/23/2022 00:01:20 - INFO - __main__ - *** Evaluate ***
+***** eval metrics *****
+  epoch                   =        3.0
+  eval_accuracy           =     0.0001
+  eval_loss               =     3.6115
+  eval_runtime            = 1:21:52.18
+  eval_samples            =     102801
+  eval_samples_per_second =     20.928
+  eval_steps_per_second   =      2.616
+08/23/2022 01:23:13 - INFO - __main__ - *** Predict ***
+***** predict metrics *****
+  predict_accuracy           =        0.0
+  predict_loss               =       3.65
+  predict_runtime            = 1:36:27.38
+  predict_samples            =     121704
+  predict_samples_per_second =     21.029
+  predict_steps_per_second   =      2.629
