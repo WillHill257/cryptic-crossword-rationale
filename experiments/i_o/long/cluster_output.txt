@@ -1,0 +1,25 @@
+{'train_runtime': 87.4943, 'train_samples_per_second': 12183.364, 'train_steps_per_second': 1522.933, 'train_loss': 0.0054223622185581586, 'epoch': 3.0}
+***** train metrics *****
+  epoch                    =        3.0
+  train_loss               =     0.0054
+  train_runtime            = 0:01:27.49
+  train_samples            =     355325
+  train_samples_per_second =  12183.364
+  train_steps_per_second   =   1522.933
+aaa
+bbb
+***** eval metrics *****
+  epoch                   =        3.0
+  eval_accuracy           =     0.0084
+  eval_loss               =     2.7018
+  eval_runtime            = 3:30:39.88
+  eval_samples            =     118442
+  eval_samples_per_second =       9.37
+  eval_steps_per_second   =      1.171
+***** predict metrics *****
+  predict_accuracy           =     0.0085
+  predict_loss               =     2.6984
+  predict_runtime            = 3:30:48.28
+  predict_samples            =     118442
+  predict_samples_per_second =      9.364
+  predict_steps_per_second   =      1.171

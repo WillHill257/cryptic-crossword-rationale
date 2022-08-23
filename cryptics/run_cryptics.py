@@ -5,7 +5,6 @@ import os
 import sys
 
 import datasets
-from datasets import load_metric
 
 import transformers
 from transformers import (
@@ -45,7 +44,7 @@ def determine_experiment(
     new_dir = new_dir.replace("//", "/")
 
     # create the new dir
-    os.makedirs(new_dir)
+    os.makedirs(new_dir, exist_ok=True)
 
     return new_dir
 
@@ -101,7 +100,7 @@ def main():
         and not training_args.overwrite_output_dir
     ):
         last_checkpoint = get_last_checkpoint(training_args.output_dir)
-        if last_checkpoint is None and len(os.listdir(training_args.output_dir)) > 0:
+        if last_checkpoint is None and len(os.listdir(training_args.output_dir)) > 3:
             raise ValueError(
                 f"Output directory ({training_args.output_dir}) already exists and is not empty. "
                 "Use --overwrite_output_dir to overcome."
@@ -276,15 +275,6 @@ def main():
             pad_to_multiple_of=8 if training_args.fp16 else None,
         )
 
-    # Metric
-    metric = load_metric("sacrebleu")
-
-    def postprocess_text(preds, labels):
-        preds = [pred.strip() for pred in preds]
-        labels = [[label.strip()] for label in labels]
-
-        return preds, labels
-
     compute_metrics = lambda data: compute_accuracy(data, tokenizer, data_args)
 
     # Initialize our Trainer
@@ -392,6 +382,9 @@ def main():
                             predictions,
                         )
                     )
+
+    # flush any buffers
+    logging.shutdown()
 
 
 def _mp_fn(index):

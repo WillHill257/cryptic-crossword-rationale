@@ -61,6 +61,18 @@ def encode_features(
     return model_inputs
 
 
+def extract_answer(label: str) -> str:
+    # find the location of the word "explanation" - this is the marker for the rationale
+    idx = label.lower().find("explanation:")
+
+    if idx < 0:
+        # no explanation given
+        return label
+    else:
+        # extract everything before the rationale
+        return label[:idx]
+
+
 def decode_for_eval(
     eval_preds: Tuple, tokenizer: T5Tokenizer, data_args: DataTrainingArguments
 ) -> Tuple[List[str], List[str]]:
@@ -74,8 +86,8 @@ def decode_for_eval(
     decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
 
     # Some simple post-processing
-    decoded_preds = [pred.strip().upper() for pred in decoded_preds]
-    decoded_labels = [label.strip().upper() for label in decoded_labels]
+    decoded_preds = [extract_answer(pred).strip().upper() for pred in decoded_preds]
+    decoded_labels = [extract_answer(label).strip().upper() for label in decoded_labels]
 
     return decoded_preds, decoded_labels
 

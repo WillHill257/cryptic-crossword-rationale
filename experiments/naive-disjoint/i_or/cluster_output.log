@@ -1,0 +1,184 @@
+08/22/2022 21:27:00 - WARNING - __main__ - Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
+08/22/2022 21:27:00 - INFO - __main__ - Training/evaluation parameters Seq2SeqTrainingArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+auto_find_batch_size=False,
+bf16=False,
+bf16_full_eval=False,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_pin_memory=True,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+do_eval=True,
+do_predict=True,
+do_train=True,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_steps=None,
+evaluation_strategy=no,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[],
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+generation_max_length=None,
+generation_num_beams=None,
+gradient_accumulation_steps=1,
+gradient_checkpointing=False,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=every_save,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+include_inputs_for_metrics=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=5e-05,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=-1,
+log_level=-1,
+log_level_replica=-1,
+log_on_each_node=True,
+logging_dir=../experiments/runs/Aug22_21-27-00_mscluster47.ms.wits.ac.za,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=5000,
+logging_strategy=steps,
+lr_scheduler_type=linear,
+max_grad_norm=1.0,
+max_steps=-1,
+metric_for_best_model=None,
+mp_parameters=,
+no_cuda=False,
+num_train_epochs=3.0,
+optim=adamw_hf,
+output_dir=../experiments/naive-disjoint/i_or,
+overwrite_output_dir=False,
+past_index=-1,
+per_device_eval_batch_size=8,
+per_device_train_batch_size=8,
+predict_with_generate=True,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=[],
+resume_from_checkpoint=None,
+run_name=../experiments/,
+save_on_each_node=False,
+save_steps=5000,
+save_strategy=steps,
+save_total_limit=None,
+seed=42,
+sharded_ddp=[],
+skip_memory_metrics=True,
+sortish_sampler=False,
+tf32=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+warmup_ratio=0.0,
+warmup_steps=0,
+weight_decay=0.0,
+xpu_backend=None,
+)
+08/22/2022 21:27:01 - WARNING - datasets.builder - Using custom data configuration default-e009c30c675eeb8b
+08/22/2022 21:27:02 - INFO - datasets.builder - Overwrite dataset info from restored data version.
+08/22/2022 21:27:02 - INFO - datasets.info - Loading Dataset info from ./models/cache/json/default-e009c30c675eeb8b/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253
+08/22/2022 21:27:03 - WARNING - datasets.builder - Reusing dataset json (./models/cache/json/default-e009c30c675eeb8b/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253)
+08/22/2022 21:27:03 - INFO - datasets.info - Loading Dataset info from ./models/cache/json/default-e009c30c675eeb8b/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253
+08/22/2022 21:27:03 - INFO - __main__ - Loaded the naive-disjoint dataset:
+DatasetDict({
+    train: Dataset({
+        features: ['clue', 'answer', 'annotation', 'rationale'],
+        num_rows: 353630
+    })
+    validation: Dataset({
+        features: ['clue', 'answer', 'annotation', 'rationale'],
+        num_rows: 119828
+    })
+    test: Dataset({
+        features: ['clue', 'answer', 'annotation', 'rationale'],
+        num_rows: 118751
+    })
+})
+08/22/2022 21:27:04 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-e009c30c675eeb8b/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-07c15c6e805f0e8a.arrow
+08/22/2022 21:27:04 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-e009c30c675eeb8b/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-5ebe1d2f3bd303f3.arrow
+08/22/2022 21:27:04 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-e009c30c675eeb8b/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-0e87aba8bc220c2e.arrow
+08/22/2022 21:27:04 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-e009c30c675eeb8b/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-4cfcc7ee8518c5ef.arrow
+08/22/2022 21:27:04 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-e009c30c675eeb8b/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-be9b30dde8d290af.arrow
+08/22/2022 21:27:04 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-e009c30c675eeb8b/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-ee299db914987db4.arrow
+08/22/2022 21:27:04 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-e009c30c675eeb8b/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-ab3bffd05bdec783.arrow
+08/22/2022 21:27:04 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-e009c30c675eeb8b/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-f552cf297e45ab8d.arrow
+{'loss': 3.7036, 'learning_rate': 4.811480107380931e-05, 'epoch': 0.11}
+{'loss': 3.3462, 'learning_rate': 4.622960214761862e-05, 'epoch': 0.23}
+{'loss': 3.2248, 'learning_rate': 4.434440322142793e-05, 'epoch': 0.34}
+{'loss': 3.1313, 'learning_rate': 4.2459204295237236e-05, 'epoch': 0.45}
+{'loss': 3.0728, 'learning_rate': 4.0574005369046545e-05, 'epoch': 0.57}
+{'loss': 3.0259, 'learning_rate': 3.868880644285585e-05, 'epoch': 0.68}
+{'loss': 2.9857, 'learning_rate': 3.680360751666516e-05, 'epoch': 0.79}
+{'loss': 2.9447, 'learning_rate': 3.491840859047446e-05, 'epoch': 0.9}
+{'loss': 2.9277, 'learning_rate': 3.303320966428378e-05, 'epoch': 1.02}
+{'loss': 2.8854, 'learning_rate': 3.114801073809309e-05, 'epoch': 1.13}
+{'loss': 2.8641, 'learning_rate': 2.9262811811902392e-05, 'epoch': 1.24}
+{'loss': 2.8482, 'learning_rate': 2.73776128857117e-05, 'epoch': 1.36}
+{'loss': 2.8284, 'learning_rate': 2.5492413959521012e-05, 'epoch': 1.47}
+{'loss': 2.8121, 'learning_rate': 2.3607215033330317e-05, 'epoch': 1.58}
+{'loss': 2.7986, 'learning_rate': 2.1722016107139626e-05, 'epoch': 1.7}
+{'loss': 2.794, 'learning_rate': 1.9836817180948934e-05, 'epoch': 1.81}
+{'loss': 2.7774, 'learning_rate': 1.7951618254758242e-05, 'epoch': 1.92}
+{'loss': 2.7666, 'learning_rate': 1.606641932856755e-05, 'epoch': 2.04}
+{'loss': 2.7503, 'learning_rate': 1.4181220402376861e-05, 'epoch': 2.15}
+{'loss': 2.7485, 'learning_rate': 1.2296021476186168e-05, 'epoch': 2.26}
+{'loss': 2.7333, 'learning_rate': 1.0410822549995476e-05, 'epoch': 2.38}
+{'loss': 2.7373, 'learning_rate': 8.525623623804785e-06, 'epoch': 2.49}
+{'loss': 2.7299, 'learning_rate': 6.640424697614092e-06, 'epoch': 2.6}
+{'loss': 2.722, 'learning_rate': 4.755225771423401e-06, 'epoch': 2.71}
+{'loss': 2.7182, 'learning_rate': 2.870026845232709e-06, 'epoch': 2.83}
+{'loss': 2.7297, 'learning_rate': 9.848279190420173e-07, 'epoch': 2.94}
+{'train_runtime': 8752.5752, 'train_samples_per_second': 121.209, 'train_steps_per_second': 15.151, 'train_loss': 2.9041364342616998, 'epoch': 3.0}
+***** train metrics *****
+  epoch                    =        3.0
+  train_loss               =     2.9041
+  train_runtime            = 2:25:52.57
+  train_samples            =     353630
+  train_samples_per_second =    121.209
+  train_steps_per_second   =     15.151
+08/22/2022 23:54:57 - INFO - __main__ - *** Evaluate ***
+***** eval metrics *****
+  epoch                   =        3.0
+  eval_accuracy           =     0.0013
+  eval_loss               =     2.5138
+  eval_runtime            = 2:35:33.07
+  eval_samples            =     119828
+  eval_samples_per_second =     12.839
+  eval_steps_per_second   =      1.605
+08/23/2022 02:30:31 - INFO - __main__ - *** Predict ***
+***** predict metrics *****
+  predict_accuracy           =      0.001
+  predict_loss               =     2.5088
+  predict_runtime            = 2:34:32.21
+  predict_samples            =     118751
+  predict_samples_per_second =     12.807
+  predict_steps_per_second   =      1.601
