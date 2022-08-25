@@ -12,6 +12,8 @@ generated_predictions.txt
 
 *.bin
 
+prompt.txt
+
 # python virtual env
 env
 
