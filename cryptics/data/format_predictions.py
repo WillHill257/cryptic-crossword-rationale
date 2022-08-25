@@ -1,7 +1,10 @@
 from typing import List
 import json
 
-from data.clue import Clue
+try:
+    from data.clue import Clue
+except:
+    from cryptics.data.clue import Clue
 
 
 def format_predictions_as_json(

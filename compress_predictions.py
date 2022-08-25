@@ -2,12 +2,12 @@ import zipfile
 import os
 import sys
 
-original_name = "generated_predictions.txt"
-zipped_name = "generated_predictions.txt.zip"
+original_name = "generated_predictions.json"
+zipped_name = "generated_predictions.json.zip"
 
 
 def compress(dirpath, filenames):
-    # check if a generate_predictions.txt file is present
+    # check if a generate_predictions.json file is present
     if (original_name in filenames) and (zipped_name not in filenames):
         # need to compress this file
         print(f"Compressing {dirpath}/{original_name}...")
@@ -21,7 +21,7 @@ def compress(dirpath, filenames):
 
 
 def uncompress(dirpath, filenames):
-    # check if a generate_predictions.txt file is present
+    # check if a generate_predictions.json file is present
     if zipped_name in filenames:
         # need to compress this file
         print(f"Uncompressing {dirpath}/{zipped_name}...")
