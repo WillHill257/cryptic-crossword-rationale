@@ -14,7 +14,8 @@ def feature_conversion(
         clue=clue_dict["clue"],
         answer=clue_dict["answer"],
         annotation=clue_dict["annotation"],
-        predicted_rationale=clue_dict["rationale"],
+        predicted_rationale=clue_dict["predicted_rationale"],
+        predicted_answer=clue_dict["predicted_answer"],
     )
 
     # convert the item to the correct format

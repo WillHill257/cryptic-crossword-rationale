@@ -26,7 +26,7 @@ from models.feature_conversion import decode_features
 from models.metrics import compute_accuracy
 from data.load_data import load_data
 from models.feature_conversion import encode_features, feature_conversion
-from data.format_predictions import format_predictions
+from data.format_predictions import format_predictions_as_json
 
 # Will error if the minimal version of Transformers is not installed. Remove at your own risks.
 check_min_version("4.21.0")
@@ -372,11 +372,11 @@ def main():
                 )
                 predictions = [pred.strip() for i, pred in enumerate(predictions)]
                 output_prediction_file = os.path.join(
-                    training_args.output_dir, "generated_predictions.txt"
+                    training_args.output_dir, "generated_predictions.json"
                 )
                 with open(output_prediction_file, "w", encoding="utf-8") as writer:
                     writer.write(
-                        format_predictions(
+                        format_predictions_as_json(
                             prediction_input["input"],
                             prediction_input["label"],
                             predictions,

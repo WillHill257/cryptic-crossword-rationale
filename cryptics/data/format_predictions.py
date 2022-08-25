@@ -1,7 +1,33 @@
 from typing import List
+import json
+
+from data.clue import Clue
 
 
-def format_predictions(
+def format_predictions_as_json(
+    inputs: List[str], labels: List[str], predictions: List[str]
+) -> str:
+    """
+    have each data item as a json object, all bundled together into an array
+    """
+
+    # loop through each data item
+    items = []
+    for input, label, prediction in zip(inputs, labels, predictions):
+        # create an empty clue
+        clue = Clue("", "", "")
+
+        # reconstruct the clue format
+        clue.convert_from_feature(input, label, prediction)
+
+        # add the map to the list
+        items.append(clue.to_map())
+
+    # return a json-encoded string
+    return json.dumps(items)
+
+
+def format_predictions_as_table(
     inputs: List[str], labels: List[str], predictions: List[str]
 ) -> str:
     """
