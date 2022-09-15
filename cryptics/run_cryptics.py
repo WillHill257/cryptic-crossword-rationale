@@ -25,7 +25,11 @@ from arguments import DataTrainingArguments, ModelArguments
 from models.feature_conversion import decode_features
 from models.metrics import compute_accuracy
 from data.load_data import load_data
-from models.feature_conversion import encode_features, feature_conversion
+from models.feature_conversion import (
+    encode_features,
+    feature_conversion,
+    feature_conversion_curriculum,
+)
 from data.format_predictions import format_predictions_as_json
 
 # Will error if the minimal version of Transformers is not installed. Remove at your own risks.
@@ -120,20 +124,36 @@ def main():
     raw_datasets = load_data(data_args.dataset_name, model_args.cache_dir)
     logger.info(f"Loaded the {data_args.dataset_name} dataset:\n{raw_datasets}")
 
-    # format the data into the required
+    # two lambda functions for if curriculum learning is done or not
+    def conversion_without_curriculum(x):
+        return feature_conversion(
+            x,
+            data_args.predict_rationale,
+            data_args.include_predicted_rationale_as_input,
+        )
+
+    def conversion_with_curriculum(x, do_descramble: bool):
+        return feature_conversion_curriculum(x, do_descramble)
+
+    # format the data as required
     old_columns = raw_datasets["train"].column_names
     with training_args.main_process_first(desc="feature conversion"):
-        raw_datasets = raw_datasets.map(
-            lambda x: feature_conversion(
-                x,
-                data_args.predict_rationale,
-                data_args.include_predicted_rationale_as_input,
-            ),
-            num_proc=data_args.preprocessing_num_workers,
-            remove_columns=old_columns,
-            load_from_cache_file=not data_args.overwrite_cache,
-            desc="Performing feature conversion",
-        )
+        if not data_args.perform_curriculum_learning:
+            raw_datasets = raw_datasets.map(
+                conversion_without_curriculum,
+                num_proc=data_args.preprocessing_num_workers,
+                remove_columns=old_columns,
+                load_from_cache_file=not data_args.overwrite_cache,
+                desc="Performing feature conversion",
+            )
+        else:
+            raw_datasets = raw_datasets.map(
+                lambda x: conversion_with_curriculum(x, False),
+                num_proc=data_args.preprocessing_num_workers,
+                remove_columns=old_columns,
+                load_from_cache_file=not data_args.overwrite_cache,
+                desc="Performing curriculum feature conversion - definition lookup",
+            )
 
     # Load pretrained model and tokenizer
     #
@@ -298,7 +318,7 @@ def main():
         elif last_checkpoint is not None:
             checkpoint = last_checkpoint
         train_result = trainer.train(resume_from_checkpoint=checkpoint)
-        trainer.save_model()  # Saves the tokenizer too for easy upload
+        trainer.save_model()  # Saves the tokenizer too for easy upload and for loading later as a pretrained model
 
         metrics = train_result.metrics
         max_train_samples = (

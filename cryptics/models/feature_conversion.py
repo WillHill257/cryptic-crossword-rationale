@@ -1,14 +1,25 @@
-from typing import List, Tuple
+from typing import Dict, List, Tuple
 from data.clue import Clue
 from arguments import DataTrainingArguments
 import numpy as np
+import random
 
 from transformers import T5Tokenizer
 
+# random number generator
+rng = random.Random()
+rng.seed(42)
+
+# function to scramble the letters of the provided word
+def randomise_letters(word: str) -> str:
+    x = list(word)
+    rng.shuffle(x)
+    return "".join(x)
+
 
 def feature_conversion(
-    clue_dict: dict, predict_rationale: bool, include_rationale: bool
-) -> str:
+    clue_dict: Dict, predict_rationale: bool, include_rationale: bool
+) -> Dict[str, str]:
     # create a Clue object
     clue_obj = Clue(
         clue=clue_dict["clue"],
@@ -20,6 +31,48 @@ def feature_conversion(
 
     # convert the item to the correct format
     return clue_obj.convert_to_feature(predict_rationale, include_rationale)
+
+
+def feature_conversion_curriculum(
+    data_dict: Dict, descramble_task: bool
+) -> Dict[str, str]:
+    """convert the object to an input and label string pairing"""
+
+    # Example input dict: {"idx": 0, "input": "Litigator's group (3)", "target": "aba"}
+    # output if no scrambling: {input: "phrase: Litigator's group (3)" , label: "aba"}
+    # output if do scrambling: {input: "descramble: baa Litigator's group (3)" , label: "aba"} -> scrambled version can be randomly at the beginning or the end
+
+    # build the input strings
+    if not descramble_task:
+        # is the definition lookup task
+        # e.g. {input: "phrase: Litigator's group (3)" , label: "aba"}
+        input_string = f"phrase: {data_dict['input']}"
+    else:
+        # is the descrambling task
+        # e.g. {input: "descramble: baa Litigator's group (3)" , label: "aba"}
+
+        # start with the clue
+        input_string = data_dict["input"]
+
+        # randomly add the scrambled version to the beginning or end
+        random_word = randomise_letters(data_dict["target"])
+        if rng.random() > 0.5:
+            # add to the front
+            input_string = random_word + " " + input_string
+        else:
+            # add to the end
+            input_string = input_string + " " + random_word
+
+        # add the prompt
+        input_string = "descramble: " + input_string
+
+    label_string = f"{data_dict['target']}"
+
+    return {"input": input_string, "label": label_string}
+    # return [
+    #     {"input": input_string, "label": label_string},
+    #     {"input": "dup", "label": label_string},
+    # ]
 
 
 def encode_features(

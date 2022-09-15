@@ -5,7 +5,8 @@ from datasets.arrow_dataset import Dataset
 
 from datasets import load_dataset
 
-datasets_names = ["random", "naive-disjoint", "word-initial-disjoint"]
+# there is dependence on the order of this list (in this file)
+datasets_names = ["random", "naive-disjoint", "word-initial-disjoint", "curriculum"]
 
 
 def load_data(
@@ -23,14 +24,24 @@ def load_data(
     # set the base path
     base_path = f"data/json/{dataset}/"
 
-    # load the train, validation, and test splits
-    dataset = load_dataset(
-        "json",
-        data_files={
+    # determine the splits to use
+    if dataset == datasets_names[3]:
+        # if the curriculum dataset, only have a train split
+        data_files = {
+            "train": base_path + "train.json",
+        }
+    else:
+        # for the cryptic-crossword datasets, have all splits
+        data_files = {
             "train": base_path + "train.json",
             "validation": base_path + "validation.json",
             "test": base_path + "test.json",
-        },
+        }
+
+    # load the train, validation, and test splits
+    dataset = load_dataset(
+        "json",
+        data_files=data_files,
         field="data",
         cache_dir=cache_dir,
     )

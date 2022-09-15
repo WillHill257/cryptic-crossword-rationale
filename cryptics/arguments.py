@@ -67,11 +67,23 @@ class DataTrainingArguments:
             "help": "Flag for including previously-produced rationale as input. If used, the model will likely be IR->O."
         },
     )
-    predict_rationale: bool = field(
+    predict_rationale: bool = (
+        field(
+            default=False,
+            metadata={
+                "help": "Flag for producing rationale simultaneously to predicting the answer. If used, the model will likely be I->OR."
+            },
+        ),
+    )
+    perform_curriculum_learning: bool = (
+        field(
+            default=False,
+            metadata={"help": "Flag for producing a pre-trained curriculum model"},
+        ),
+    )
+    use_curriculum_learning: bool = field(
         default=False,
-        metadata={
-            "help": "Flag for producing rationale simultaneously to predicting the answer. If used, the model will likely be I->OR."
-        },
+        metadata={"help": "Flag for using a pre-trained curriculum model"},
     )
 
     dataset_name: Optional[str] = field(
@@ -233,3 +245,20 @@ class DataTrainingArguments:
             ), "`validation_file` should be a jsonlines file."
         if self.val_max_target_length is None:
             self.val_max_target_length = self.max_target_length
+
+        # check that the dataset and curriculum flags align
+        if (
+            self.dataset_name == datasets_names[3]
+            and self.perform_curriculum_learning == False
+        ):
+            raise ValueError(
+                "The curriculum dataset has been specified, but the associated flag has not been set"
+            )
+
+        if (
+            self.dataset_name == datasets_names[3]
+            and self.use_curriculum_learning == True
+        ):
+            raise ValueError(
+                "Specify a cryptic-clue dataset to use following curriculum learning"
+            )
