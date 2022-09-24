@@ -148,11 +148,17 @@ def main():
             )
         else:
             raw_datasets = raw_datasets.map(
-                lambda x: conversion_with_curriculum(x, False),
+                lambda x: conversion_with_curriculum(
+                    x, data_args.curriculum_learning_do_descramble
+                ),
                 num_proc=data_args.preprocessing_num_workers,
                 remove_columns=old_columns,
                 load_from_cache_file=not data_args.overwrite_cache,
-                desc="Performing curriculum feature conversion - definition lookup",
+                desc="Performing curriculum feature conversion - {}".format(
+                    "descramble"
+                    if data_args.curriculum_learning_do_descramble
+                    else "definition lookup"
+                ),
             )
 
     # Load pretrained model and tokenizer

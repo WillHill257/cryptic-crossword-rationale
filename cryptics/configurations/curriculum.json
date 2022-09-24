@@ -8,5 +8,6 @@
   "save_steps": 5000,
   "do_train": true,
   "perform_curriculum_learning": true,
-  "max_train_samples": 10
+  "curriculum_learning_do_descramble": false,
+  "num_train_epochs": 15
 }

@@ -76,9 +76,19 @@ class DataTrainingArguments:
         ),
     )
     perform_curriculum_learning: bool = (
+        (
+            field(
+                default=False,
+                metadata={"help": "Flag for producing a pre-trained curriculum model"},
+            ),
+        ),
+    )
+    curriculum_learning_do_descramble: bool = (
         field(
             default=False,
-            metadata={"help": "Flag for producing a pre-trained curriculum model"},
+            metadata={
+                "help": "Flag for whether the descramble task should be used for curriculum learning"
+            },
         ),
     )
     use_curriculum_learning: bool = field(
