@@ -7,7 +7,7 @@ cryptics/models/cache/*
 # experiments/*
 # !experiments/empty
 checkpoint-*
-*.tar.gz
+*.tar.*
 generated_predictions.txt
 
 *.bin
