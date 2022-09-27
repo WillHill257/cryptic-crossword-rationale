@@ -10,7 +10,7 @@ then
 fi
 
 # specify the filepath to use
-filepath="./curriculum_models/$2"
+filepath="./experiments/$2"
 # make the directories as needed
 mkdir -p "$filepath"
 
