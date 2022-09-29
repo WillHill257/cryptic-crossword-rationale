@@ -1,5 +1,5 @@
 {
-  "model_name_or_path": "../curriculum_models/t5-small/definition-lookup/",
+  "model_name_or_path": "../curriculum_models/t5-large/definition-lookup/",
   "cache_dir": "./models/cache/",
   "dataset_name": "curriculum",
   "output_dir": "../curriculum_models/",
