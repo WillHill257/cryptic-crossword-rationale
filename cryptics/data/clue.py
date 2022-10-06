@@ -83,7 +83,10 @@ class Clue:
             self.predicted_rationale = potential_rationale
 
     def convert_to_feature(
-        self, predict_rationale: bool, include_rationale: bool
+        self,
+        predict_rationale: bool,
+        include_rationale: bool,
+        is_inference: bool,
     ) -> str:
         """generate the strings to use as input and label for T5"""
 
@@ -101,6 +104,11 @@ class Clue:
 
             # add the rationale to the label
             label_string = label_string + " explanation: " + self.annotation
+        elif predict_rationale and is_inference:
+            # prepend the prompt
+            in_string = "explain " + in_string
+
+            # don't need to alter the label, since we do not use it, so self.annotation == "" doesn't matter
 
         # if we want to use the previously-predicted rationale as input
         if include_rationale:

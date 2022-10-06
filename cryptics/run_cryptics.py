@@ -22,10 +22,10 @@ from transformers.trainer_utils import get_last_checkpoint
 from transformers.utils import check_min_version
 
 from arguments import DataTrainingArguments, ModelArguments
-from models.feature_conversion import decode_features
 from models.metrics import compute_accuracy
 from data.load_data import load_data
 from models.feature_conversion import (
+    decode_features,
     encode_features,
     feature_conversion,
     feature_conversion_curriculum,
@@ -125,11 +125,12 @@ def main():
     logger.info(f"Loaded the {data_args.dataset_name} dataset:\n{raw_datasets}")
 
     # two lambda functions for if curriculum learning is done or not
-    def conversion_without_curriculum(x):
+    def conversion_without_curriculum(x, is_inference):
         return feature_conversion(
             x,
             data_args.predict_rationale,
             data_args.include_predicted_rationale_as_input,
+            is_inference,
         )
 
     def conversion_with_curriculum(x, do_descramble: bool):
@@ -139,13 +140,19 @@ def main():
     old_columns = raw_datasets["train"].column_names
     with training_args.main_process_first(desc="feature conversion"):
         if not data_args.perform_curriculum_learning:
-            raw_datasets = raw_datasets.map(
-                conversion_without_curriculum,
-                num_proc=data_args.preprocessing_num_workers,
-                remove_columns=old_columns,
-                load_from_cache_file=not data_args.overwrite_cache,
-                desc="Performing feature conversion",
-            )
+            for split in ["train", "validation", "test"]:
+                if split == "test" or data_args.infer_on_all_splits == True:
+                    is_inference = True
+                else:
+                    is_inference = False
+
+                raw_datasets[split] = raw_datasets[split].map(
+                    lambda x: conversion_without_curriculum(x, is_inference),
+                    num_proc=data_args.preprocessing_num_workers,
+                    remove_columns=old_columns,
+                    load_from_cache_file=not data_args.overwrite_cache,
+                    desc="Performing feature conversion",
+                )
         else:
             raw_datasets = raw_datasets.map(
                 lambda x: conversion_with_curriculum(
@@ -269,7 +276,17 @@ def main():
     if training_args.do_predict:
         if "test" not in raw_datasets:
             raise ValueError("--do_predict requires a test dataset")
-        predict_dataset = raw_datasets["test"]
+        if data_args.infer_on_all_splits == True:
+            predict_dataset = datasets.concatenate_datasets(
+                [
+                    raw_datasets["train"],
+                    raw_datasets["validation"],
+                    raw_datasets["test"],
+                ]
+            )
+        else:
+            predict_dataset = raw_datasets["test"]
+
         if data_args.max_predict_samples is not None:
             max_predict_samples = min(
                 len(predict_dataset), data_args.max_predict_samples

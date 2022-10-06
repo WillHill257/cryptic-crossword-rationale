@@ -13,6 +13,7 @@ generated_predictions.txt
 *.bin
 
 prompt.txt
+t/
 
 # python virtual env
 env

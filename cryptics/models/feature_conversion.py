@@ -18,7 +18,10 @@ def randomise_letters(word: str) -> str:
 
 
 def feature_conversion(
-    clue_dict: Dict, predict_rationale: bool, include_rationale: bool
+    clue_dict: Dict,
+    predict_rationale: bool,
+    include_rationale: bool,
+    is_inference: bool,
 ) -> Dict[str, str]:
     # create a Clue object
     clue_obj = Clue(
@@ -30,7 +33,9 @@ def feature_conversion(
     )
 
     # convert the item to the correct format
-    return clue_obj.convert_to_feature(predict_rationale, include_rationale)
+    return clue_obj.convert_to_feature(
+        predict_rationale, include_rationale, is_inference
+    )
 
 
 def feature_conversion_curriculum(
@@ -69,10 +74,6 @@ def feature_conversion_curriculum(
     label_string = f"{data_dict['target']}"
 
     return {"input": input_string, "label": label_string}
-    # return [
-    #     {"input": input_string, "label": label_string},
-    #     {"input": "dup", "label": label_string},
-    # ]
 
 
 def encode_features(

@@ -1,0 +1,17 @@
+{
+  "model_name_or_path": "../experiments/word-initial-disjoint/t5-small/cl/i_or/",
+  "cache_dir": "./models/cache/",
+  "dataset_name": "word-initial-disjoint",
+  "output_dir": "../experiments/",
+  "overwrite_output_dir": false,
+  "preprocessing_num_workers": 8,
+  "save_steps": 5000,
+  "do_train": false,
+  "do_eval": false,
+  "do_predict": true,
+  "perform_curriculum_learning": false,
+  "include_predicted_rationale_as_input": false,
+  "predict_rationale": true,
+  "predict_with_generate": true,
+  "infer_on_all_splits": true
+}

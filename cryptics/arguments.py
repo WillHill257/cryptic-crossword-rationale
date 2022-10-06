@@ -68,11 +68,23 @@ class DataTrainingArguments:
         },
     )
     predict_rationale: bool = (
-        field(
-            default=False,
-            metadata={
-                "help": "Flag for producing rationale simultaneously to predicting the answer. If used, the model will likely be I->OR."
-            },
+        (
+            field(
+                default=False,
+                metadata={
+                    "help": "Flag for producing rationale simultaneously to predicting the answer. If used, the model will likely be I->OR."
+                },
+            ),
+        ),
+    )
+    infer_on_all_splits: bool = (
+        (
+            field(
+                default=False,
+                metadata={
+                    "help": "Flag for performing inference on all the train, validation, and test splits"
+                },
+            ),
         ),
     )
     perform_curriculum_learning: bool = (
