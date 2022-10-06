@@ -1,5 +1,5 @@
 {
-  "model_name_or_path": "../curriculum_models/t5-small/descramble/",
+  "model_name_or_path": "../curriculum_models/t5-large/descramble/",
   "cache_dir": "./models/cache/",
   "dataset_name": "word-initial-disjoint",
   "output_dir": "../experiments/",

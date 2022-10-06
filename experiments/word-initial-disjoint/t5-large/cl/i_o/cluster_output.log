@@ -1,0 +1,304 @@
+10/04/2022 08:31:13 - WARNING - __main__ - Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
+10/04/2022 08:31:13 - INFO - __main__ - Training/evaluation parameters Seq2SeqTrainingArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+auto_find_batch_size=False,
+bf16=False,
+bf16_full_eval=False,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_pin_memory=True,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+do_eval=True,
+do_predict=True,
+do_train=True,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_steps=None,
+evaluation_strategy=no,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[],
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+generation_max_length=None,
+generation_num_beams=None,
+gradient_accumulation_steps=1,
+gradient_checkpointing=False,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=every_save,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+include_inputs_for_metrics=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=5e-05,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=-1,
+log_level=-1,
+log_level_replica=-1,
+log_on_each_node=True,
+logging_dir=../experiments/runs/Oct04_08-31-12_mscluster12.ms.wits.ac.za,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=500,
+logging_strategy=steps,
+lr_scheduler_type=linear,
+max_grad_norm=1.0,
+max_steps=-1,
+metric_for_best_model=None,
+mp_parameters=,
+no_cuda=False,
+num_train_epochs=3.0,
+optim=adamw_hf,
+output_dir=../experiments/word-initial-disjoint/t5-large/cl/i_o,
+overwrite_output_dir=False,
+past_index=-1,
+per_device_eval_batch_size=8,
+per_device_train_batch_size=8,
+predict_with_generate=True,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=[],
+resume_from_checkpoint=None,
+run_name=../experiments/,
+save_on_each_node=False,
+save_steps=5000,
+save_strategy=steps,
+save_total_limit=None,
+seed=42,
+sharded_ddp=[],
+skip_memory_metrics=True,
+sortish_sampler=False,
+tf32=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+warmup_ratio=0.0,
+warmup_steps=0,
+weight_decay=0.0,
+xpu_backend=None,
+)
+10/04/2022 08:31:13 - INFO - __main__ - Checkpoint detected, resuming training at ../experiments/word-initial-disjoint/t5-large/cl/i_o/checkpoint-85000. To avoid this behaviour, change the `--output_dir` or add `--overwrite_output_dir` to train from scratch.
+10/04/2022 08:31:14 - WARNING - datasets.builder - Using custom data configuration default-43bfcad7938c5696
+10/04/2022 08:31:14 - INFO - datasets.builder - Overwrite dataset info from restored data version.
+10/04/2022 08:31:14 - INFO - datasets.info - Loading Dataset info from ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253
+10/04/2022 08:31:14 - WARNING - datasets.builder - Reusing dataset json (./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253)
+10/04/2022 08:31:14 - INFO - datasets.info - Loading Dataset info from ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253
+10/04/2022 08:31:14 - INFO - __main__ - Loaded the word-initial-disjoint dataset:
+DatasetDict({
+    train: Dataset({
+        features: ['clue', 'answer', 'annotation', 'predicted_rationale', 'predicted_answer'],
+        num_rows: 367704
+    })
+    validation: Dataset({
+        features: ['clue', 'answer', 'annotation', 'predicted_rationale', 'predicted_answer'],
+        num_rows: 102801
+    })
+    test: Dataset({
+        features: ['clue', 'answer', 'annotation', 'predicted_rationale', 'predicted_answer'],
+        num_rows: 121704
+    })
+})
+10/04/2022 08:31:15 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-7f3989015629fd38.arrow
+10/04/2022 08:31:15 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-869732ee2500019c.arrow
+10/04/2022 08:31:15 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-83e6b6cbf31c5e3a.arrow
+10/04/2022 08:31:15 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-e3d43d7d725e3f06.arrow
+10/04/2022 08:31:15 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-7fb7b251539ebe31.arrow
+10/04/2022 08:31:15 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-5024b70e26c8cc80.arrow
+10/04/2022 08:31:15 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-aeb9e520c215a286.arrow
+10/04/2022 08:31:15 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-be584a43469fc0a4.arrow
+10/04/2022 08:31:15 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-0247f57264d8d1b9.arrow
+10/04/2022 08:31:15 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-cec3e7112bc4b9fc.arrow
+10/04/2022 08:31:15 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-2fbb42089cafe3a7.arrow
+10/04/2022 08:31:15 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-d10179ce7a3f21c4.arrow
+10/04/2022 08:31:15 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-ee4a20dd74634455.arrow
+10/04/2022 08:31:15 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-cf19f023b33f1dee.arrow
+10/04/2022 08:31:15 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-e4d9f29d3ccdee53.arrow
+10/04/2022 08:31:15 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-b7d9ae09dca03842.arrow
+10/04/2022 08:31:16 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-f9a6925889ebd6a9.arrow
+10/04/2022 08:31:16 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-4a247d4a130cac75.arrow
+10/04/2022 08:31:16 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-5e07ae504418e68d.arrow
+10/04/2022 08:31:16 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-09b31301e64b454d.arrow
+10/04/2022 08:31:16 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-ea4db9678948fd0d.arrow
+10/04/2022 08:31:16 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-30d5fe006a786ee3.arrow
+10/04/2022 08:31:16 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-1bce51aa09caba58.arrow
+10/04/2022 08:31:16 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-c97415d12a8db13d.arrow
+10/04/2022 08:31:51 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-0ec6eca8db9d7541.arrow
+10/04/2022 08:31:51 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-826d2eeb0c71017c.arrow
+10/04/2022 08:31:51 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-7d023cfeec624ef6.arrow
+10/04/2022 08:31:51 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-eea3742e2f5ff61e.arrow
+10/04/2022 08:31:51 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-6d04558d1a203e59.arrow
+10/04/2022 08:31:51 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-fdb8d4d7eea26713.arrow
+10/04/2022 08:31:51 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-bf68e43dd109c1a5.arrow
+10/04/2022 08:31:51 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-bc589d3ba9b99d3b.arrow
+10/04/2022 08:31:52 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-9f94414e6b6d8953.arrow
+10/04/2022 08:31:52 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-4afdcf4652177f73.arrow
+10/04/2022 08:31:52 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-d39c1740e29aad8a.arrow
+10/04/2022 08:31:52 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-3fd4562a611acdf3.arrow
+10/04/2022 08:31:52 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-61a0aeaf0741d934.arrow
+10/04/2022 08:31:52 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-73b6b21da39375a4.arrow
+10/04/2022 08:31:52 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-c0286c615d46c427.arrow
+10/04/2022 08:31:52 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-ec4dd25462a81760.arrow
+10/04/2022 08:31:52 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-917f0abd41fd6367.arrow
+10/04/2022 08:31:52 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-5a63ccde06c6d22c.arrow
+10/04/2022 08:31:52 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-f2dda81646632c25.arrow
+10/04/2022 08:31:52 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-87570620067aff77.arrow
+10/04/2022 08:31:52 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-2e3c7e225efbc1d5.arrow
+10/04/2022 08:31:52 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-4d56b1ed6cccef15.arrow
+10/04/2022 08:31:52 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-4fa2b8a81afdb1a1.arrow
+10/04/2022 08:31:53 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-43bfcad7938c5696/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-b5a0c89109741c44.arrow
+{'loss': 1.4068, 'learning_rate': 1.8996801775341038e-05, 'epoch': 1.86}
+{'loss': 1.4061, 'learning_rate': 1.8815496522565253e-05, 'epoch': 1.87}
+{'loss': 1.4148, 'learning_rate': 1.863419126978947e-05, 'epoch': 1.88}
+{'loss': 1.3952, 'learning_rate': 1.8452886017013686e-05, 'epoch': 1.89}
+{'loss': 1.3866, 'learning_rate': 1.8271580764237904e-05, 'epoch': 1.9}
+{'loss': 1.4159, 'learning_rate': 1.809027551146212e-05, 'epoch': 1.91}
+{'loss': 1.413, 'learning_rate': 1.7908970258686338e-05, 'epoch': 1.93}
+{'loss': 1.402, 'learning_rate': 1.7727665005910552e-05, 'epoch': 1.94}
+{'loss': 1.4119, 'learning_rate': 1.754635975313477e-05, 'epoch': 1.95}
+{'loss': 1.4186, 'learning_rate': 1.7365054500358986e-05, 'epoch': 1.96}
+{'loss': 1.4213, 'learning_rate': 1.7183749247583204e-05, 'epoch': 1.97}
+{'loss': 1.4114, 'learning_rate': 1.700244399480742e-05, 'epoch': 1.98}
+{'loss': 1.3951, 'learning_rate': 1.6821138742031637e-05, 'epoch': 1.99}
+{'loss': 1.3809, 'learning_rate': 1.6639833489255852e-05, 'epoch': 2.0}
+{'loss': 1.2648, 'learning_rate': 1.6458528236480067e-05, 'epoch': 2.01}
+{'loss': 1.2745, 'learning_rate': 1.6277222983704286e-05, 'epoch': 2.02}
+{'loss': 1.2744, 'learning_rate': 1.60959177309285e-05, 'epoch': 2.03}
+{'loss': 1.2678, 'learning_rate': 1.591461247815272e-05, 'epoch': 2.05}
+{'loss': 1.2744, 'learning_rate': 1.5733307225376934e-05, 'epoch': 2.06}
+{'loss': 1.2804, 'learning_rate': 1.5552001972601152e-05, 'epoch': 2.07}
+{'loss': 1.2815, 'learning_rate': 1.5370696719825367e-05, 'epoch': 2.08}
+{'loss': 1.2732, 'learning_rate': 1.5189391467049586e-05, 'epoch': 2.09}
+{'loss': 1.2777, 'learning_rate': 1.50080862142738e-05, 'epoch': 2.1}
+{'loss': 1.3015, 'learning_rate': 1.4826780961498019e-05, 'epoch': 2.11}
+{'loss': 1.3187, 'learning_rate': 1.4645475708722234e-05, 'epoch': 2.12}
+{'loss': 1.2709, 'learning_rate': 1.4464170455946449e-05, 'epoch': 2.13}
+{'loss': 1.2753, 'learning_rate': 1.4282865203170667e-05, 'epoch': 2.14}
+{'loss': 1.2671, 'learning_rate': 1.4101559950394882e-05, 'epoch': 2.15}
+{'loss': 1.2581, 'learning_rate': 1.39202546976191e-05, 'epoch': 2.16}
+{'loss': 1.238, 'learning_rate': 1.3738949444843315e-05, 'epoch': 2.18}
+{'loss': 1.2893, 'learning_rate': 1.3557644192067534e-05, 'epoch': 2.19}
+{'loss': 1.2656, 'learning_rate': 1.3376338939291749e-05, 'epoch': 2.2}
+{'loss': 1.2655, 'learning_rate': 1.3195033686515967e-05, 'epoch': 2.21}
+{'loss': 1.262, 'learning_rate': 1.3013728433740182e-05, 'epoch': 2.22}
+{'loss': 1.2582, 'learning_rate': 1.28324231809644e-05, 'epoch': 2.23}
+{'loss': 1.271, 'learning_rate': 1.2651117928188615e-05, 'epoch': 2.24}
+{'loss': 1.2566, 'learning_rate': 1.2469812675412832e-05, 'epoch': 2.25}
+{'loss': 1.2425, 'learning_rate': 1.228850742263705e-05, 'epoch': 2.26}
+{'loss': 1.2543, 'learning_rate': 1.2107202169861267e-05, 'epoch': 2.27}
+{'loss': 1.2432, 'learning_rate': 1.1925896917085484e-05, 'epoch': 2.28}
+{'loss': 1.2521, 'learning_rate': 1.17445916643097e-05, 'epoch': 2.3}
+{'loss': 1.2579, 'learning_rate': 1.1563286411533915e-05, 'epoch': 2.31}
+{'loss': 1.2661, 'learning_rate': 1.1381981158758132e-05, 'epoch': 2.32}
+{'loss': 1.2469, 'learning_rate': 1.1200675905982348e-05, 'epoch': 2.33}
+{'loss': 1.2609, 'learning_rate': 1.1019370653206565e-05, 'epoch': 2.34}
+{'loss': 1.2621, 'learning_rate': 1.0838065400430782e-05, 'epoch': 2.35}
+{'loss': 1.2568, 'learning_rate': 1.0656760147654998e-05, 'epoch': 2.36}
+{'loss': 1.2433, 'learning_rate': 1.0475454894879215e-05, 'epoch': 2.37}
+{'loss': 1.2374, 'learning_rate': 1.0294149642103432e-05, 'epoch': 2.38}
+{'loss': 1.2699, 'learning_rate': 1.0112844389327648e-05, 'epoch': 2.39}
+{'loss': 1.2527, 'learning_rate': 9.931539136551865e-06, 'epoch': 2.4}
+{'loss': 1.2785, 'learning_rate': 9.750233883776082e-06, 'epoch': 2.41}
+{'loss': 1.2575, 'learning_rate': 9.568928631000298e-06, 'epoch': 2.43}
+{'loss': 1.2784, 'learning_rate': 9.387623378224513e-06, 'epoch': 2.44}
+{'loss': 1.2725, 'learning_rate': 9.20631812544873e-06, 'epoch': 2.45}
+{'loss': 1.2544, 'learning_rate': 9.025012872672947e-06, 'epoch': 2.46}
+{'loss': 1.2446, 'learning_rate': 8.843707619897163e-06, 'epoch': 2.47}
+{'loss': 1.239, 'learning_rate': 8.66240236712138e-06, 'epoch': 2.48}
+{'loss': 1.2713, 'learning_rate': 8.481097114345597e-06, 'epoch': 2.49}
+{'loss': 1.2551, 'learning_rate': 8.299791861569813e-06, 'epoch': 2.5}
+{'loss': 1.2585, 'learning_rate': 8.11848660879403e-06, 'epoch': 2.51}
+{'loss': 1.2547, 'learning_rate': 7.937181356018246e-06, 'epoch': 2.52}
+{'loss': 1.2699, 'learning_rate': 7.755876103242465e-06, 'epoch': 2.53}
+{'loss': 1.2652, 'learning_rate': 7.574570850466681e-06, 'epoch': 2.55}
+{'loss': 1.249, 'learning_rate': 7.393265597690896e-06, 'epoch': 2.56}
+{'loss': 1.2492, 'learning_rate': 7.211960344915113e-06, 'epoch': 2.57}
+{'loss': 1.2536, 'learning_rate': 7.03065509213933e-06, 'epoch': 2.58}
+{'loss': 1.2524, 'learning_rate': 6.849349839363546e-06, 'epoch': 2.59}
+{'loss': 1.2535, 'learning_rate': 6.668044586587763e-06, 'epoch': 2.6}
+{'loss': 1.2472, 'learning_rate': 6.48673933381198e-06, 'epoch': 2.61}
+{'loss': 1.247, 'learning_rate': 6.305434081036196e-06, 'epoch': 2.62}
+{'loss': 1.2601, 'learning_rate': 6.124128828260413e-06, 'epoch': 2.63}
+{'loss': 1.2336, 'learning_rate': 5.94282357548463e-06, 'epoch': 2.64}
+{'loss': 1.2236, 'learning_rate': 5.7615183227088454e-06, 'epoch': 2.65}
+{'loss': 1.2572, 'learning_rate': 5.580213069933062e-06, 'epoch': 2.67}
+{'loss': 1.2504, 'learning_rate': 5.398907817157279e-06, 'epoch': 2.68}
+{'loss': 1.2488, 'learning_rate': 5.217602564381495e-06, 'epoch': 2.69}
+{'loss': 1.2331, 'learning_rate': 5.036297311605712e-06, 'epoch': 2.7}
+{'loss': 1.2356, 'learning_rate': 4.854992058829929e-06, 'epoch': 2.71}
+{'loss': 1.2356, 'learning_rate': 4.673686806054145e-06, 'epoch': 2.72}
+{'loss': 1.2195, 'learning_rate': 4.492381553278362e-06, 'epoch': 2.73}
+{'loss': 1.2409, 'learning_rate': 4.311076300502579e-06, 'epoch': 2.74}
+{'loss': 1.2239, 'learning_rate': 4.129771047726795e-06, 'epoch': 2.75}
+{'loss': 1.2545, 'learning_rate': 3.948465794951012e-06, 'epoch': 2.76}
+{'loss': 1.2407, 'learning_rate': 3.7671605421752277e-06, 'epoch': 2.77}
+{'loss': 1.2403, 'learning_rate': 3.5858552893994444e-06, 'epoch': 2.78}
+{'loss': 1.2358, 'learning_rate': 3.404550036623661e-06, 'epoch': 2.8}
+{'loss': 1.2411, 'learning_rate': 3.2232447838478777e-06, 'epoch': 2.81}
+{'loss': 1.2395, 'learning_rate': 3.0419395310720943e-06, 'epoch': 2.82}
+{'loss': 1.2334, 'learning_rate': 2.860634278296311e-06, 'epoch': 2.83}
+{'loss': 1.2364, 'learning_rate': 2.6793290255205276e-06, 'epoch': 2.84}
+{'loss': 1.2155, 'learning_rate': 2.498023772744744e-06, 'epoch': 2.85}
+{'loss': 1.2301, 'learning_rate': 2.3167185199689605e-06, 'epoch': 2.86}
+{'loss': 1.2649, 'learning_rate': 2.135413267193177e-06, 'epoch': 2.87}
+{'loss': 1.2324, 'learning_rate': 1.954108014417394e-06, 'epoch': 2.88}
+{'loss': 1.2458, 'learning_rate': 1.7728027616416103e-06, 'epoch': 2.89}
+{'loss': 1.2287, 'learning_rate': 1.5914975088658271e-06, 'epoch': 2.9}
+{'loss': 1.2374, 'learning_rate': 1.4101922560900436e-06, 'epoch': 2.92}
+{'loss': 1.2365, 'learning_rate': 1.22888700331426e-06, 'epoch': 2.93}
+{'loss': 1.2116, 'learning_rate': 1.0475817505384766e-06, 'epoch': 2.94}
+{'loss': 1.2395, 'learning_rate': 8.662764977626933e-07, 'epoch': 2.95}
+{'loss': 1.2177, 'learning_rate': 6.849712449869098e-07, 'epoch': 2.96}
+{'loss': 1.2547, 'learning_rate': 5.036659922111264e-07, 'epoch': 2.97}
+{'loss': 1.2308, 'learning_rate': 3.223607394353429e-07, 'epoch': 2.98}
+{'loss': 1.2293, 'learning_rate': 1.4105548665955952e-07, 'epoch': 2.99}
+{'train_runtime': 11657.3089, 'train_samples_per_second': 94.628, 'train_steps_per_second': 11.829, 'train_loss': 0.48830443702077336, 'epoch': 3.0}
+***** train metrics *****
+  epoch                    =        3.0
+  train_loss               =     0.4883
+  train_runtime            = 3:14:17.30
+  train_samples            =     367704
+  train_samples_per_second =     94.628
+  train_steps_per_second   =     11.829
+10/04/2022 11:48:15 - INFO - __main__ - *** Evaluate ***
+***** eval metrics *****
+  epoch                   =        3.0
+  eval_accuracy           =     0.0032
+  eval_loss               =     3.1061
+  eval_runtime            = 1:50:14.32
+  eval_samples            =     102801
+  eval_samples_per_second =     15.542
+  eval_steps_per_second   =      1.943
+10/04/2022 13:38:30 - INFO - __main__ - *** Predict ***
+***** predict metrics *****
+  predict_accuracy           =     0.0016
+  predict_loss               =      3.157
+  predict_runtime            = 2:10:12.14
+  predict_samples            =     121704
+  predict_samples_per_second =     15.579
+  predict_steps_per_second   =      1.947
