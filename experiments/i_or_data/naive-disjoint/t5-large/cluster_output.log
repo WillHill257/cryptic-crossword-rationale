@@ -1,0 +1,157 @@
+10/06/2022 17:55:24 - WARNING - __main__ - Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
+10/06/2022 17:55:24 - INFO - __main__ - Training/evaluation parameters Seq2SeqTrainingArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+auto_find_batch_size=False,
+bf16=False,
+bf16_full_eval=False,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_pin_memory=True,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+do_eval=False,
+do_predict=True,
+do_train=False,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_steps=None,
+evaluation_strategy=no,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[],
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+generation_max_length=None,
+generation_num_beams=None,
+gradient_accumulation_steps=1,
+gradient_checkpointing=False,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=every_save,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+include_inputs_for_metrics=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=5e-05,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=-1,
+log_level=-1,
+log_level_replica=-1,
+log_on_each_node=True,
+logging_dir=../experiments/runs/Oct06_17-55-23_mscluster30.ms.wits.ac.za,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=500,
+logging_strategy=steps,
+lr_scheduler_type=linear,
+max_grad_norm=1.0,
+max_steps=-1,
+metric_for_best_model=None,
+mp_parameters=,
+no_cuda=False,
+num_train_epochs=3.0,
+optim=adamw_hf,
+output_dir=../experiments/i_or_data/naive-disjoint/t5-large/,
+overwrite_output_dir=False,
+past_index=-1,
+per_device_eval_batch_size=8,
+per_device_train_batch_size=8,
+predict_with_generate=True,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=[],
+resume_from_checkpoint=None,
+run_name=../experiments/,
+save_on_each_node=False,
+save_steps=5000,
+save_strategy=steps,
+save_total_limit=None,
+seed=42,
+sharded_ddp=[],
+skip_memory_metrics=True,
+sortish_sampler=False,
+tf32=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+warmup_ratio=0.0,
+warmup_steps=0,
+weight_decay=0.0,
+xpu_backend=None,
+)
+10/06/2022 17:55:24 - WARNING - datasets.builder - Using custom data configuration default-c08303abd5e70107
+10/06/2022 17:55:24 - INFO - datasets.builder - Overwrite dataset info from restored data version.
+10/06/2022 17:55:24 - INFO - datasets.info - Loading Dataset info from ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253
+10/06/2022 17:55:26 - WARNING - datasets.builder - Reusing dataset json (./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253)
+10/06/2022 17:55:26 - INFO - datasets.info - Loading Dataset info from ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253
+10/06/2022 17:55:30 - INFO - __main__ - Loaded the naive-disjoint dataset:
+DatasetDict({
+    train: Dataset({
+        features: ['clue', 'answer', 'annotation', 'predicted_rationale', 'predicted_answer'],
+        num_rows: 353630
+    })
+    validation: Dataset({
+        features: ['clue', 'answer', 'annotation', 'predicted_rationale', 'predicted_answer'],
+        num_rows: 119828
+    })
+    test: Dataset({
+        features: ['clue', 'answer', 'annotation', 'predicted_rationale', 'predicted_answer'],
+        num_rows: 118751
+    })
+})
+10/06/2022 17:55:30 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-8eaf320a31405df2.arrow
+10/06/2022 17:55:30 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-4a37e8ce23866d2c.arrow
+10/06/2022 17:55:30 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-bc2d78daacd6b250.arrow
+10/06/2022 17:55:30 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-829fb9bc06c45062.arrow
+10/06/2022 17:55:30 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-8b481deaad982635.arrow
+10/06/2022 17:55:31 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-bc83ed115f293cec.arrow
+10/06/2022 17:55:31 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-95f97e339b84b077.arrow
+10/06/2022 17:55:31 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-89b04d5ef1b61d73.arrow
+10/06/2022 17:55:36 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-630bbc993782a7bc.arrow
+10/06/2022 17:55:36 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-d0455519d6719db2.arrow
+10/06/2022 17:55:36 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-a81db27656773d77.arrow
+10/06/2022 17:55:36 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-d6f3e72f64965cc5.arrow
+10/06/2022 17:55:36 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-cb280ebca99693e5.arrow
+10/06/2022 17:55:36 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-1f99d75806b58240.arrow
+10/06/2022 17:55:36 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-62a75ade40660316.arrow
+10/06/2022 17:55:37 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-9a7180c3d9509c75.arrow
+10/06/2022 17:55:38 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-c6ad8a0752ab49c0.arrow
+10/06/2022 17:55:38 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-ebebdd48d6c74e35.arrow
+10/06/2022 17:55:38 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-3382fe5d776fc2dc.arrow
+10/06/2022 17:55:38 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-0ec46cba1b9f8a9d.arrow
+10/06/2022 17:55:38 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-a0a8f8452e2bc5a2.arrow
+10/06/2022 17:55:38 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-a35658d7d132ab63.arrow
+10/06/2022 17:55:38 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-d83f722eb54d576a.arrow
+10/06/2022 17:55:38 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-c08303abd5e70107/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-d2a7143aea4dd621.arrow
+10/06/2022 18:01:38 - INFO - __main__ - *** Predict ***
+***** predict metrics *****
+  predict_accuracy           =            0.0885
+  predict_loss               =            1.6226
+  predict_runtime            = 1 day, 1:21:43.23
+  predict_samples            =            592209
+  predict_samples_per_second =             6.486
+  predict_steps_per_second   =             0.811

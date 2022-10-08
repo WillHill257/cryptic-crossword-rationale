@@ -1,5 +1,5 @@
 {
-  "model_name_or_path": "../experiments/word-initial-disjoint/t5-small/cl/i_or/",
+  "model_name_or_path": "../experiments/word-initial-disjoint/t5-large/cl/i_or/",
   "cache_dir": "./models/cache/",
   "dataset_name": "word-initial-disjoint",
   "output_dir": "../experiments/",

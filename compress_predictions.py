@@ -32,7 +32,9 @@ def uncompress(dirpath, filenames):
 
 def main(compression_type):
     # loop through all of the experiment folders (excluding checkpoints)
-    for (dirpath, dirnames, filenames) in os.walk("./experiments", topdown=True):
+    for (dirpath, dirnames, filenames) in os.walk(
+        "./experiments/i_or_data/", topdown=True
+    ):
         # don't process checkpoints
         del_idx = [i for i, x in enumerate(dirnames) if "checkpoint" in x]
         for idx in del_idx[::-1]:
