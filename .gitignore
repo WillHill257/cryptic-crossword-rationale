@@ -9,7 +9,7 @@ cryptics/models/cache/*
 checkpoint-*
 *.tar.*
 generated_predictions.txt
-/experiments/i_or_data/**/generated_predictions.json
+/experiments/i_or_data_unified/**/generated_predictions.json
 
 *.bin
 
