@@ -67,41 +67,29 @@ class DataTrainingArguments:
             "help": "Flag for including previously-produced rationale as input. If used, the model will likely be IR->O."
         },
     )
-    predict_rationale: bool = (
-        (
-            field(
-                default=False,
-                metadata={
-                    "help": "Flag for producing rationale simultaneously to predicting the answer. If used, the model will likely be I->OR."
-                },
-            ),
-        ),
+    predict_rationale: bool = field(
+        default=False,
+        metadata={
+            "help": "Flag for producing rationale simultaneously to predicting the answer. If used, the model will likely be I->OR."
+        },
     )
-    infer_on_all_splits: bool = (
-        (
-            field(
-                default=False,
-                metadata={
-                    "help": "Flag for performing inference on all the train, validation, and test splits"
-                },
-            ),
-        ),
+    infer_on_split: str = field(
+        default="test",
+        metadata={
+            "help": "Name of the split to perform inference on: train, validation, test"
+        },
     )
-    perform_curriculum_learning: bool = (
-        (
-            field(
-                default=False,
-                metadata={"help": "Flag for producing a pre-trained curriculum model"},
-            ),
-        ),
+
+    perform_curriculum_learning: bool = field(
+        default=False,
+        metadata={"help": "Flag for producing a pre-trained curriculum model"},
     )
-    curriculum_learning_do_descramble: bool = (
-        field(
-            default=False,
-            metadata={
-                "help": "Flag for whether the descramble task should be used for curriculum learning"
-            },
-        ),
+
+    curriculum_learning_do_descramble: bool = field(
+        default=False,
+        metadata={
+            "help": "Flag for whether the descramble task should be used for curriculum learning"
+        },
     )
     use_curriculum_learning: bool = field(
         default=False,

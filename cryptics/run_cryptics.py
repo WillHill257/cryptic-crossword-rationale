@@ -141,7 +141,7 @@ def main():
     with training_args.main_process_first(desc="feature conversion"):
         if not data_args.perform_curriculum_learning:
             for split in ["train", "validation", "test"]:
-                if split == "test" or data_args.infer_on_all_splits == True:
+                if data_args.infer_on_split == split:
                     is_inference = True
                 else:
                     is_inference = False
@@ -276,16 +276,8 @@ def main():
     if training_args.do_predict:
         if "test" not in raw_datasets:
             raise ValueError("--do_predict requires a test dataset")
-        if data_args.infer_on_all_splits == True:
-            predict_dataset = datasets.concatenate_datasets(
-                [
-                    raw_datasets["train"],
-                    raw_datasets["validation"],
-                    raw_datasets["test"],
-                ]
-            )
-        else:
-            predict_dataset = raw_datasets["test"]
+
+        predict_dataset = raw_datasets[data_args.infer_on_split]
 
         if data_args.max_predict_samples is not None:
             max_predict_samples = min(
