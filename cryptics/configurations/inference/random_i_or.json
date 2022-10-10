@@ -1,5 +1,5 @@
 {
-  "model_name_or_path": "../experiments/random/t5-small/cl/i_or/",
+  "model_name_or_path": "../experiments/random/t5-large/cl/i_or/",
   "cache_dir": "./models/cache/",
   "dataset_name": "random",
   "output_dir": "../experiments/",
@@ -13,6 +13,5 @@
   "include_predicted_rationale_as_input": false,
   "predict_rationale": true,
   "predict_with_generate": true,
-  "infer_on_all_splits": true,
   "infer_on_split": "train"
 }
