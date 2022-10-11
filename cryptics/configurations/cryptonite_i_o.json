@@ -1,0 +1,16 @@
+{
+  "model_name_or_path": "t5-large",
+  "cache_dir": "./models/cache/",
+  "dataset_name": "cryptonite",
+  "output_dir": "../experiments/",
+  "overwrite_output_dir": false,
+  "preprocessing_num_workers": 8,
+  "save_steps": 5000,
+  "do_train": true,
+  "do_eval": true,
+  "do_predict": true,
+  "perform_curriculum_learning": false,
+  "include_predicted_rationale_as_input": false,
+  "predict_rationale": false,
+  "predict_with_generate": true
+}

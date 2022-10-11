@@ -2,7 +2,7 @@ __pycache__
 cryptics/models/cache/*
 !cryptics/models/cache/empty
 .DS_Store
-/cryptics/data/**/*.json
+/cryptics/data/**/*.json*
 
 # experiments/*
 # !experiments/empty

@@ -6,7 +6,13 @@ from datasets.arrow_dataset import Dataset
 from datasets import load_dataset
 
 # there is dependence on the order of this list (in this file)
-datasets_names = ["random", "naive-disjoint", "word-initial-disjoint", "curriculum"]
+datasets_names = [
+    "random",
+    "naive-disjoint",
+    "word-initial-disjoint",
+    "curriculum",
+    "cryptonite",
+]
 
 
 def load_data(
