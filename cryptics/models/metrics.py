@@ -23,7 +23,7 @@ def compute_accuracy(
     # count the number of correct predictions
     count = 0
     for i in range(len(decoded_labels)):
-        count += decoded_preds[i] == decoded_labels[i]
+        count += decoded_preds[i].upper() == decoded_labels[i].upper()
 
     accuracy = count / len(decoded_labels)
     result = {"accuracy": accuracy}
