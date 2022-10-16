@@ -121,8 +121,19 @@ def main():
     set_seed(training_args.seed)
 
     # load datasets
-    raw_datasets = load_data(data_args.dataset_name, model_args.cache_dir)
-    logger.info(f"Loaded the {data_args.dataset_name} dataset:\n{raw_datasets}")
+    raw_datasets = load_data(
+        data_args.dataset_name,
+        model_args.cache_dir,
+        data_args.model_size_for_generated_predictions,
+    )
+    message = (
+        f"\nThis is for an IR->O model based on {data_args.model_size_for_generated_predictions}"
+        if data_args.model_size_for_generated_predictions
+        else ""
+    )
+    logger.info(
+        f"Loaded the {data_args.dataset_name} dataset:\n{raw_datasets}" + message
+    )
 
     # two lambda functions for if curriculum learning is done or not
     def conversion_without_curriculum(x, is_inference):

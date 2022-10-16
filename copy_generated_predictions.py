@@ -3,7 +3,7 @@ copy the generated predictions (from the experimental output to the data folder)
 """
 
 import os
-import shutil
+import json
 
 if __name__ == "__main__":
     # define the path components
@@ -28,5 +28,11 @@ if __name__ == "__main__":
                 i = len(destination_path) - destination_path[::-1].find("/")
                 os.makedirs(os.path.dirname(destination_path[:i]), exist_ok=True)
 
-                # copy the file
-                shutil.copyfile(source_path, destination_path)
+                # read the file and convert it to json
+                with open(source_path, "r") as source_file:
+                    json_obj = json.loads(source_file.read())
+
+                # write the destination file, with the added "data" field
+                json_obj = {"data": json_obj}
+                with open(destination_path, "w") as dest_file:
+                    dest_file.write(json.dumps(json_obj))
