@@ -13,5 +13,6 @@
   "include_predicted_rationale_as_input": false,
   "predict_rationale": false,
   "predict_with_generate": true,
-  "infer_on_split": "test"
+  "infer_on_split": "test",
+  "num_beams": 5
 }
