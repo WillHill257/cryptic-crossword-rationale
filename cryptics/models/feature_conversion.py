@@ -22,6 +22,7 @@ def feature_conversion(
     predict_rationale: bool,
     include_rationale: bool,
     is_inference: bool,
+    use_gold_annotations_with_input: bool,
 ) -> Dict[str, str]:
     # create a Clue object
     clue_obj = Clue(
@@ -34,7 +35,10 @@ def feature_conversion(
 
     # convert the item to the correct format
     return clue_obj.convert_to_feature(
-        predict_rationale, include_rationale, is_inference
+        predict_rationale,
+        include_rationale,
+        is_inference,
+        use_gold_annotations_with_input,
     )
 
 

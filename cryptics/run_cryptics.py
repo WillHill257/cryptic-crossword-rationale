@@ -124,11 +124,11 @@ def main():
     raw_datasets = load_data(
         data_args.dataset_name,
         model_args.cache_dir,
-        data_args.model_size_for_generated_predictions,
+        data_args.model_type_for_generated_predictions,
     )
     message = (
-        f"\nThis is for an IR->O model based on {data_args.model_size_for_generated_predictions}"
-        if data_args.model_size_for_generated_predictions
+        f"\nThis is for an IR->O model based on {data_args.model_type_for_generated_predictions}"
+        if data_args.model_type_for_generated_predictions
         else ""
     )
     logger.info(
@@ -142,6 +142,7 @@ def main():
             data_args.predict_rationale,
             data_args.include_predicted_rationale_as_input,
             is_inference,
+            data_args.model_type_for_generated_predictions == "gold",
         )
 
     def conversion_with_curriculum(x, do_descramble: bool):

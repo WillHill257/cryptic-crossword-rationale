@@ -87,6 +87,7 @@ class Clue:
         predict_rationale: bool,
         include_rationale: bool,
         is_inference: bool,
+        use_gold_annotations_with_input: bool,
     ) -> str:
         """generate the strings to use as input and label for T5"""
 
@@ -113,8 +114,15 @@ class Clue:
         # if we want to use the previously-predicted rationale as input
         if include_rationale:
             # no extra prompt is prepended
-            # append the predicted rationale
-            in_string = in_string + " explanation: " + self.predicted_rationale
+            # append the predicted rationale or annotation
+            rationale = (
+                self.annotation
+                if use_gold_annotations_with_input
+                else self.predicted_rationale
+            )
+
+            if rationale != "":
+                in_string = in_string + " explanation: " + rationale
 
             # no change is made to the label string
 
@@ -127,9 +135,9 @@ class Clue:
 #     "'of' is the middle word",
 #     "the middle word is 'of'",
 # )
-# print(clue.convert_to_feature(True, False))  # I -> OR
-# print(clue.convert_to_feature(False, True))  # IR -> O
-# print(clue.convert_to_feature(False, False))  # I -> O
+# print(clue.convert_to_feature(True, False, True, False))  # I -> OR
+# print(clue.convert_to_feature(False, True, True, True))  # IR -> O
+# print(clue.convert_to_feature(False, False, True, False))  # I -> O
 # print(clue.convert_to_feature(True, True))  # IR -> OR' (shouldn't be used)
 
 # # I->O

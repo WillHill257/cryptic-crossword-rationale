@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from typing import Optional
-from data.load_data import datasets_names, model_size_names
+from data.load_data import datasets_names, model_type_names
 
 
 @dataclass
@@ -103,10 +103,10 @@ class DataTrainingArguments:
         },
     )
 
-    model_size_for_generated_predictions: Optional[str] = field(
+    model_type_for_generated_predictions: Optional[str] = field(
         default=None,
         metadata={
-            "help": f"If doing IR -> O, specify the size of the model that generated the data. This will be used to read in the correct data. Must be one of: {model_size_names}"
+            "help": f"If doing IR -> O, specify the size of the model that generated the data. This will be used to read in the correct data. Must be one of: {model_type_names}"
         },
     )
 

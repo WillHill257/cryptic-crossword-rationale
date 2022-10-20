@@ -14,11 +14,11 @@ datasets_names = [
     "cryptonite",
 ]
 
-model_size_names = ["t5-small", "t5-large"]
+model_type_names = ["t5-small", "t5-large", "gold"]
 
 
 def load_data(
-    dataset: str, cache_dir: str, generated_predictions_model_size: str = None
+    dataset: str, cache_dir: str, generated_predictions_model_type: str = None
 ) -> Union[DatasetDict, Dataset, IterableDatasetDict, IterableDataset]:
     """function to load the train and validation splits of the specified dataset, which should be one of "random", "naive-disjoint", or "word-initial-disjoint" """
 
@@ -29,17 +29,17 @@ def load_data(
             "Please choose one of {}".format(datasets_names)
         )
     if (
-        generated_predictions_model_size
-        and generated_predictions_model_size not in model_size_names
+        generated_predictions_model_type
+        and generated_predictions_model_type not in model_type_names
     ):
         raise ValueError(
             "The specified value for 'model size' is not supported. "
-            "Please choose one of {}".format(model_size_names)
+            "Please choose one of {}".format(model_type_names)
         )
 
     # set the base path
-    if generated_predictions_model_size:
-        base_path = f"data/json/generated-predictions/{dataset}/{generated_predictions_model_size}/"
+    if generated_predictions_model_type and generated_predictions_model_type != "gold":
+        base_path = f"data/json/generated-predictions/{dataset}/{generated_predictions_model_type}/"
     else:
         base_path = f"data/json/{dataset}/"
 

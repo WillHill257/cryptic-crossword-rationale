@@ -13,5 +13,5 @@
   "include_predicted_rationale_as_input": true,
   "predict_rationale": false,
   "predict_with_generate": true,
-  "model_size_for_generated_predictions": "t5-small"
+  "model_type_for_generated_predictions": "gold"
 }
