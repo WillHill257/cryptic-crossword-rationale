@@ -1,0 +1,323 @@
+10/22/2022 15:49:45 - WARNING - __main__ - Process rank: -1, device: cuda:0, n_gpu: 2distributed training: False, 16-bits training: False
+10/22/2022 15:49:45 - INFO - __main__ - Training/evaluation parameters Seq2SeqTrainingArguments(
+_n_gpu=2,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+auto_find_batch_size=False,
+bf16=False,
+bf16_full_eval=False,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_pin_memory=True,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+do_eval=True,
+do_predict=True,
+do_train=True,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_steps=None,
+evaluation_strategy=no,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[],
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+generation_max_length=None,
+generation_num_beams=None,
+gradient_accumulation_steps=1,
+gradient_checkpointing=False,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=every_save,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+include_inputs_for_metrics=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=5e-05,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=-1,
+log_level=-1,
+log_level_replica=-1,
+log_on_each_node=True,
+logging_dir=../experiments/runs/Oct22_15-49-43_mscluster10.ms.wits.ac.za,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=500,
+logging_strategy=steps,
+lr_scheduler_type=linear,
+max_grad_norm=1.0,
+max_steps=-1,
+metric_for_best_model=None,
+mp_parameters=,
+no_cuda=False,
+num_train_epochs=3.0,
+optim=adamw_hf,
+output_dir=../experiments/random/t5-large/cl/ir_o_gold,
+overwrite_output_dir=False,
+past_index=-1,
+per_device_eval_batch_size=8,
+per_device_train_batch_size=8,
+predict_with_generate=True,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=[],
+resume_from_checkpoint=None,
+run_name=../experiments/,
+save_on_each_node=False,
+save_steps=5000,
+save_strategy=steps,
+save_total_limit=None,
+seed=42,
+sharded_ddp=[],
+skip_memory_metrics=True,
+sortish_sampler=False,
+tf32=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+warmup_ratio=0.0,
+warmup_steps=0,
+weight_decay=0.0,
+xpu_backend=None,
+)
+10/22/2022 15:49:45 - INFO - __main__ - Checkpoint detected, resuming training at ../experiments/random/t5-large/cl/ir_o_gold/checkpoint-5000. To avoid this behaviour, change the `--output_dir` or add `--overwrite_output_dir` to train from scratch.
+10/22/2022 15:49:46 - WARNING - datasets.builder - Using custom data configuration default-f839a5e0ab6e6a1f
+10/22/2022 15:49:46 - INFO - datasets.builder - Overwrite dataset info from restored data version.
+10/22/2022 15:49:46 - INFO - datasets.info - Loading Dataset info from ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253
+10/22/2022 15:49:46 - WARNING - datasets.builder - Reusing dataset json (./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253)
+10/22/2022 15:49:46 - INFO - datasets.info - Loading Dataset info from ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253
+10/22/2022 15:49:48 - INFO - __main__ - Loaded the random dataset:
+DatasetDict({
+    train: Dataset({
+        features: ['clue', 'answer', 'annotation', 'predicted_rationale', 'predicted_answer'],
+        num_rows: 355325
+    })
+    validation: Dataset({
+        features: ['clue', 'answer', 'annotation', 'predicted_rationale', 'predicted_answer'],
+        num_rows: 118442
+    })
+    test: Dataset({
+        features: ['clue', 'answer', 'annotation', 'predicted_rationale', 'predicted_answer'],
+        num_rows: 118442
+    })
+})
+This is for an IR->O model based on gold
+10/22/2022 15:49:49 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-4618fc7728047005.arrow
+10/22/2022 15:49:49 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-5ffe5941d491939a.arrow
+10/22/2022 15:49:49 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-310b307349688085.arrow
+10/22/2022 15:49:49 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-0eef0ac43c108e0d.arrow
+10/22/2022 15:49:49 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-3a2b0eca8be46372.arrow
+10/22/2022 15:49:49 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-73bbf3e19fb678a9.arrow
+10/22/2022 15:49:49 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-d473d6332a3c7b7f.arrow
+10/22/2022 15:49:49 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-a7b37f6df7b9df07.arrow
+10/22/2022 15:49:50 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-8e7d786763f47d37.arrow
+10/22/2022 15:49:50 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-e8b372792d2bb2fb.arrow
+10/22/2022 15:49:50 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-a1bf1d6c5fd5a3e9.arrow
+10/22/2022 15:49:50 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-27dadb4474a9f087.arrow
+10/22/2022 15:49:50 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-d7d30466a56b461a.arrow
+10/22/2022 15:49:50 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-8f04f7813e38ffe7.arrow
+10/22/2022 15:49:50 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-d4134409ba473caf.arrow
+10/22/2022 15:49:50 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-d1a661f9b5aaa6af.arrow
+10/22/2022 15:49:50 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-a254f800b5b5ba47.arrow
+10/22/2022 15:49:50 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-2b41730b9ffbc015.arrow
+10/22/2022 15:49:50 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-6eb7272a666b2c9b.arrow
+10/22/2022 15:49:50 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-6a158952866553d7.arrow
+10/22/2022 15:49:50 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-a9cc92e03e6a24dd.arrow
+10/22/2022 15:49:50 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-439b40cb6b56cdc6.arrow
+10/22/2022 15:49:50 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-2be6556743790a58.arrow
+10/22/2022 15:49:50 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-ecbe03597c7fa641.arrow
+10/22/2022 15:51:04 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-30854da794b0857c.arrow
+10/22/2022 15:51:04 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-5265a7684f83b22e.arrow
+10/22/2022 15:51:04 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-0849044547fd3f2a.arrow
+10/22/2022 15:51:04 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-dabbaa2c245c8896.arrow
+10/22/2022 15:51:04 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-723a556a8d319c39.arrow
+10/22/2022 15:51:04 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-154738f623f907a0.arrow
+10/22/2022 15:51:04 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-fdda0acf62b981fd.arrow
+10/22/2022 15:51:04 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-bed171903d6f5151.arrow
+10/22/2022 15:51:06 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-9a74d23136e7cac6.arrow
+10/22/2022 15:51:06 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-d6c0932b50d62079.arrow
+10/22/2022 15:51:06 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-b34ac6e7fe05206f.arrow
+10/22/2022 15:51:06 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-59b9d7b6f4a1e858.arrow
+10/22/2022 15:51:06 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-370092585a4a48a1.arrow
+10/22/2022 15:51:06 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-7481694eaf7b4008.arrow
+10/22/2022 15:51:06 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-f7d819b31f404bfc.arrow
+10/22/2022 15:51:06 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-24285a1a67314173.arrow
+10/22/2022 15:51:07 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-820ea891c0232476.arrow
+10/22/2022 15:51:07 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-22c83b97878913e6.arrow
+10/22/2022 15:51:07 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-84ccba0f65310205.arrow
+10/22/2022 15:51:07 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-476d67de4220f932.arrow
+10/22/2022 15:51:07 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-7e6822b68c2de8c5.arrow
+10/22/2022 15:51:07 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-fda4cc014ee5db12.arrow
+10/22/2022 15:51:07 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-94748868c9448d94.arrow
+10/22/2022 15:51:07 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at ./models/cache/json/default-f839a5e0ab6e6a1f/0.0.0/a3e658c4731e59120d44081ac10bf85dc7e1388126b92338344ce9661907f253/cache-72984ad87f2b4e31.arrow
+{'loss': 1.6555, 'learning_rate': 4.5872358309317964e-05, 'epoch': 0.25}
+{'loss': 1.6017, 'learning_rate': 4.54971181556196e-05, 'epoch': 0.27}
+{'loss': 1.5736, 'learning_rate': 4.512187800192123e-05, 'epoch': 0.29}
+{'loss': 1.5567, 'learning_rate': 4.474663784822286e-05, 'epoch': 0.32}
+{'loss': 1.5347, 'learning_rate': 4.4371397694524494e-05, 'epoch': 0.34}
+{'loss': 1.4888, 'learning_rate': 4.399615754082613e-05, 'epoch': 0.36}
+{'loss': 1.4592, 'learning_rate': 4.362091738712776e-05, 'epoch': 0.38}
+{'loss': 1.4477, 'learning_rate': 4.32456772334294e-05, 'epoch': 0.41}
+{'loss': 1.4553, 'learning_rate': 4.287043707973103e-05, 'epoch': 0.43}
+{'loss': 1.4466, 'learning_rate': 4.249519692603266e-05, 'epoch': 0.45}
+{'loss': 1.4023, 'learning_rate': 4.2119956772334294e-05, 'epoch': 0.47}
+{'loss': 1.3595, 'learning_rate': 4.174471661863593e-05, 'epoch': 0.5}
+{'loss': 1.3767, 'learning_rate': 4.136947646493756e-05, 'epoch': 0.52}
+{'loss': 1.363, 'learning_rate': 4.099423631123919e-05, 'epoch': 0.54}
+{'loss': 1.3388, 'learning_rate': 4.061899615754083e-05, 'epoch': 0.56}
+{'loss': 1.3199, 'learning_rate': 4.024375600384246e-05, 'epoch': 0.59}
+{'loss': 1.3199, 'learning_rate': 3.986851585014409e-05, 'epoch': 0.61}
+{'loss': 1.316, 'learning_rate': 3.9493275696445724e-05, 'epoch': 0.63}
+{'loss': 1.312, 'learning_rate': 3.911803554274736e-05, 'epoch': 0.65}
+{'loss': 1.2907, 'learning_rate': 3.874279538904899e-05, 'epoch': 0.68}
+{'loss': 1.2578, 'learning_rate': 3.836755523535063e-05, 'epoch': 0.7}
+{'loss': 1.2893, 'learning_rate': 3.7992315081652255e-05, 'epoch': 0.72}
+{'loss': 1.2598, 'learning_rate': 3.761707492795389e-05, 'epoch': 0.74}
+{'loss': 1.264, 'learning_rate': 3.7241834774255523e-05, 'epoch': 0.77}
+{'loss': 1.2329, 'learning_rate': 3.686659462055716e-05, 'epoch': 0.79}
+{'loss': 1.2051, 'learning_rate': 3.649135446685879e-05, 'epoch': 0.81}
+{'loss': 1.2135, 'learning_rate': 3.611611431316042e-05, 'epoch': 0.83}
+{'loss': 1.2063, 'learning_rate': 3.5740874159462054e-05, 'epoch': 0.86}
+{'loss': 1.2051, 'learning_rate': 3.536563400576369e-05, 'epoch': 0.88}
+{'loss': 1.1763, 'learning_rate': 3.499039385206532e-05, 'epoch': 0.9}
+{'loss': 1.1872, 'learning_rate': 3.461515369836696e-05, 'epoch': 0.92}
+{'loss': 1.2086, 'learning_rate': 3.423991354466859e-05, 'epoch': 0.95}
+{'loss': 1.1855, 'learning_rate': 3.386467339097022e-05, 'epoch': 0.97}
+{'loss': 1.1974, 'learning_rate': 3.3489433237271854e-05, 'epoch': 0.99}
+{'loss': 1.1003, 'learning_rate': 3.3114193083573485e-05, 'epoch': 1.01}
+{'loss': 1.0708, 'learning_rate': 3.273895292987512e-05, 'epoch': 1.04}
+{'loss': 1.0613, 'learning_rate': 3.236371277617675e-05, 'epoch': 1.06}
+{'loss': 1.0725, 'learning_rate': 3.198847262247839e-05, 'epoch': 1.08}
+{'loss': 1.0424, 'learning_rate': 3.1613232468780015e-05, 'epoch': 1.1}
+{'loss': 1.0495, 'learning_rate': 3.123799231508165e-05, 'epoch': 1.13}
+{'loss': 1.0406, 'learning_rate': 3.0862752161383284e-05, 'epoch': 1.15}
+{'loss': 1.0318, 'learning_rate': 3.0487512007684922e-05, 'epoch': 1.17}
+{'loss': 1.0468, 'learning_rate': 3.0112271853986553e-05, 'epoch': 1.19}
+{'loss': 1.0322, 'learning_rate': 2.9737031700288187e-05, 'epoch': 1.22}
+{'loss': 1.0291, 'learning_rate': 2.9361791546589818e-05, 'epoch': 1.24}
+{'loss': 1.0235, 'learning_rate': 2.8986551392891452e-05, 'epoch': 1.26}
+{'loss': 1.0078, 'learning_rate': 2.8611311239193083e-05, 'epoch': 1.28}
+{'loss': 1.0293, 'learning_rate': 2.823607108549472e-05, 'epoch': 1.31}
+{'loss': 1.033, 'learning_rate': 2.786083093179635e-05, 'epoch': 1.33}
+{'loss': 1.0156, 'learning_rate': 2.7485590778097987e-05, 'epoch': 1.35}
+{'loss': 1.0261, 'learning_rate': 2.7110350624399618e-05, 'epoch': 1.37}
+{'loss': 1.0179, 'learning_rate': 2.6735110470701252e-05, 'epoch': 1.4}
+{'loss': 1.0222, 'learning_rate': 2.6359870317002883e-05, 'epoch': 1.42}
+{'loss': 1.0009, 'learning_rate': 2.5984630163304517e-05, 'epoch': 1.44}
+{'loss': 0.996, 'learning_rate': 2.5609390009606148e-05, 'epoch': 1.46}
+{'loss': 0.9935, 'learning_rate': 2.5234149855907786e-05, 'epoch': 1.49}
+{'loss': 0.9942, 'learning_rate': 2.4858909702209414e-05, 'epoch': 1.51}
+{'loss': 0.9894, 'learning_rate': 2.4483669548511048e-05, 'epoch': 1.53}
+{'loss': 0.9842, 'learning_rate': 2.4108429394812682e-05, 'epoch': 1.55}
+{'loss': 0.9991, 'learning_rate': 2.3733189241114313e-05, 'epoch': 1.58}
+{'loss': 0.9927, 'learning_rate': 2.3357949087415948e-05, 'epoch': 1.6}
+{'loss': 1.0011, 'learning_rate': 2.2982708933717582e-05, 'epoch': 1.62}
+{'loss': 0.9875, 'learning_rate': 2.2607468780019213e-05, 'epoch': 1.64}
+{'loss': 0.979, 'learning_rate': 2.2232228626320847e-05, 'epoch': 1.67}
+{'loss': 0.9761, 'learning_rate': 2.1856988472622482e-05, 'epoch': 1.69}
+{'loss': 0.9724, 'learning_rate': 2.1481748318924113e-05, 'epoch': 1.71}
+{'loss': 0.9635, 'learning_rate': 2.1106508165225747e-05, 'epoch': 1.73}
+{'loss': 0.9624, 'learning_rate': 2.0731268011527378e-05, 'epoch': 1.76}
+{'loss': 0.9782, 'learning_rate': 2.035602785782901e-05, 'epoch': 1.78}
+{'loss': 0.9674, 'learning_rate': 1.9980787704130643e-05, 'epoch': 1.8}
+{'loss': 0.95, 'learning_rate': 1.9605547550432278e-05, 'epoch': 1.82}
+{'loss': 0.948, 'learning_rate': 1.923030739673391e-05, 'epoch': 1.85}
+{'loss': 0.9788, 'learning_rate': 1.8855067243035543e-05, 'epoch': 1.87}
+{'loss': 0.9536, 'learning_rate': 1.8479827089337178e-05, 'epoch': 1.89}
+{'loss': 0.93, 'learning_rate': 1.810458693563881e-05, 'epoch': 1.91}
+{'loss': 0.9644, 'learning_rate': 1.7729346781940443e-05, 'epoch': 1.94}
+{'loss': 0.941, 'learning_rate': 1.7354106628242074e-05, 'epoch': 1.96}
+{'loss': 0.9451, 'learning_rate': 1.6978866474543708e-05, 'epoch': 1.98}
+{'loss': 0.9278, 'learning_rate': 1.6603626320845343e-05, 'epoch': 2.0}
+{'loss': 0.8642, 'learning_rate': 1.6228386167146974e-05, 'epoch': 2.03}
+{'loss': 0.8698, 'learning_rate': 1.5853146013448608e-05, 'epoch': 2.05}
+{'loss': 0.8606, 'learning_rate': 1.5477905859750242e-05, 'epoch': 2.07}
+{'loss': 0.8579, 'learning_rate': 1.5102665706051875e-05, 'epoch': 2.09}
+{'loss': 0.8516, 'learning_rate': 1.4727425552353508e-05, 'epoch': 2.12}
+{'loss': 0.8618, 'learning_rate': 1.435218539865514e-05, 'epoch': 2.14}
+{'loss': 0.8531, 'learning_rate': 1.3976945244956775e-05, 'epoch': 2.16}
+{'loss': 0.8595, 'learning_rate': 1.3601705091258407e-05, 'epoch': 2.18}
+{'loss': 0.8596, 'learning_rate': 1.322646493756004e-05, 'epoch': 2.21}
+{'loss': 0.8692, 'learning_rate': 1.2851224783861673e-05, 'epoch': 2.23}
+{'loss': 0.8369, 'learning_rate': 1.2475984630163305e-05, 'epoch': 2.25}
+{'loss': 0.8437, 'learning_rate': 1.2100744476464938e-05, 'epoch': 2.27}
+{'loss': 0.8458, 'learning_rate': 1.172550432276657e-05, 'epoch': 2.3}
+{'loss': 0.8504, 'learning_rate': 1.1350264169068205e-05, 'epoch': 2.32}
+{'loss': 0.857, 'learning_rate': 1.0975024015369838e-05, 'epoch': 2.34}
+{'loss': 0.8405, 'learning_rate': 1.059978386167147e-05, 'epoch': 2.36}
+{'loss': 0.8527, 'learning_rate': 1.0224543707973103e-05, 'epoch': 2.39}
+{'loss': 0.8507, 'learning_rate': 9.849303554274736e-06, 'epoch': 2.41}
+{'loss': 0.8445, 'learning_rate': 9.474063400576369e-06, 'epoch': 2.43}
+{'loss': 0.8394, 'learning_rate': 9.098823246878003e-06, 'epoch': 2.45}
+{'loss': 0.8652, 'learning_rate': 8.723583093179636e-06, 'epoch': 2.48}
+{'loss': 0.8528, 'learning_rate': 8.348342939481268e-06, 'epoch': 2.5}
+{'loss': 0.8492, 'learning_rate': 7.973102785782901e-06, 'epoch': 2.52}
+{'loss': 0.8458, 'learning_rate': 7.597862632084534e-06, 'epoch': 2.54}
+{'loss': 0.8611, 'learning_rate': 7.222622478386168e-06, 'epoch': 2.57}
+{'loss': 0.8339, 'learning_rate': 6.8473823246878015e-06, 'epoch': 2.59}
+{'loss': 0.8198, 'learning_rate': 6.472142170989434e-06, 'epoch': 2.61}
+{'loss': 0.8436, 'learning_rate': 6.096902017291067e-06, 'epoch': 2.63}
+{'loss': 0.8401, 'learning_rate': 5.7216618635926995e-06, 'epoch': 2.66}
+{'loss': 0.8316, 'learning_rate': 5.346421709894333e-06, 'epoch': 2.68}
+{'loss': 0.8466, 'learning_rate': 4.971181556195966e-06, 'epoch': 2.7}
+{'loss': 0.8576, 'learning_rate': 4.595941402497598e-06, 'epoch': 2.72}
+{'loss': 0.8414, 'learning_rate': 4.220701248799232e-06, 'epoch': 2.75}
+{'loss': 0.8482, 'learning_rate': 3.8454610951008646e-06, 'epoch': 2.77}
+{'loss': 0.8433, 'learning_rate': 3.470220941402498e-06, 'epoch': 2.79}
+{'loss': 0.8397, 'learning_rate': 3.0949807877041307e-06, 'epoch': 2.81}
+{'loss': 0.8325, 'learning_rate': 2.719740634005764e-06, 'epoch': 2.84}
+{'loss': 0.8552, 'learning_rate': 2.344500480307397e-06, 'epoch': 2.86}
+{'loss': 0.8402, 'learning_rate': 1.96926032660903e-06, 'epoch': 2.88}
+{'loss': 0.8553, 'learning_rate': 1.5940201729106627e-06, 'epoch': 2.9}
+{'loss': 0.8344, 'learning_rate': 1.2187800192122958e-06, 'epoch': 2.93}
+{'loss': 0.853, 'learning_rate': 8.435398655139289e-07, 'epoch': 2.95}
+{'loss': 0.8394, 'learning_rate': 4.6829971181556196e-07, 'epoch': 2.97}
+{'loss': 0.8421, 'learning_rate': 9.305955811719501e-08, 'epoch': 2.99}
+{'train_runtime': 36267.0131, 'train_samples_per_second': 29.392, 'train_steps_per_second': 1.837, 'train_loss': 0.9627350513804543, 'epoch': 3.0}
+***** train metrics *****
+  epoch                    =         3.0
+  train_loss               =      0.9627
+  train_runtime            = 10:04:27.01
+  train_samples            =      355325
+  train_samples_per_second =      29.392
+  train_steps_per_second   =       1.837
+10/23/2022 01:59:44 - INFO - __main__ - *** Evaluate ***
+***** eval metrics *****
+  epoch                   =        3.0
+  eval_accuracy           =      0.456
+  eval_loss               =      0.792
+  eval_runtime            = 2:26:41.06
+  eval_samples            =     118442
+  eval_samples_per_second =     13.458
+  eval_steps_per_second   =      0.841
+10/23/2022 04:26:25 - INFO - __main__ - *** Predict ***
+***** predict metrics *****
+  predict_accuracy           =     0.4567
+  predict_loss               =     0.7913
+  predict_runtime            = 2:27:10.88
+  predict_samples            =     118442
+  predict_samples_per_second =     13.412
+  predict_steps_per_second   =      0.838
