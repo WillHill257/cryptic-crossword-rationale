@@ -4,7 +4,7 @@
 
 Cryptic Crosswords are puzzles characterised by the need to overcome extreme ambiguity in clues, to the point where even humans struggle to solve them. Thus they provide a ready-made environment for learning and evaluating the ability of Language Models to learn the nuances of natural language and perform complex disambiguation tasks. Owing to the recency of work concerning Cryptic Crosswords, no investigations into the effect of rationales on the answer accuracy have taken place, although they have had significant success on other NLP problems. We examine the use of a self-rationalising model, which simultaneously predicts the answer to a cryptic clue and an associated free-text rationale, on the answer accuracy. We use T5 as our base model and include Curriculum Learning in our training process. We find that there is additional predictive ability in the free-text rationales, but that our language models are unable to learn to produce the rationales with good-enough quality to exploit it. Thus, in certain cases, even though the overall accuracy remains low, the use of a self-rationalising model does lead to slight improvement.
 
-[View the full paper](https://github.com/WillHill257/cryptic-crossword-rationale/blob/main/Research%20Paper.pdf)
+[View the full paper](Research%20Paper.pdf)
 
 ## Structure
 
