@@ -41,5 +41,56 @@ def main():
     return
 
 
+def find_match():
+    ran = "./experiments/random/t5-large/cl/i_or/sorted_predictions.json"
+    wid = "./experiments/word-initial-disjoint/t5-large/cl/i_or/sorted_predictions.json"
+
+    # open both files
+    ran_file = open(ran, "r")
+    ran_predictions = json.loads(ran_file.read())
+    ran_file.close()
+    wid_file = open(wid, "r")
+    wid_predictions = json.loads(wid_file.read())
+    wid_file.close()
+
+    ran_i = 0
+    wid_i = 0
+
+    while ran_i < len(ran_predictions) and wid_i < len(wid_predictions):
+        ran_clue = ran_predictions[ran_i]["clue"]
+        wid_clue = wid_predictions[wid_i]["clue"]
+        # if they are the same, print
+        if ran_clue == wid_clue:
+            ran_right = (
+                ran_predictions[ran_i]["answer"]
+                == ran_predictions[ran_i]["predicted_answer"]
+            )
+            wid_right = (
+                wid_predictions[wid_i]["answer"]
+                == wid_predictions[wid_i]["predicted_answer"]
+            )
+
+            if ran_right:
+                ran_predictions[ran_i]["correct"] = True
+
+            if wid_right:
+                wid_predictions[wid_i]["correct"] = True
+
+            print(json.dumps(ran_predictions[ran_i]))
+            print(json.dumps(wid_predictions[wid_i]))
+            print("-" * 50)
+
+            ran_i += 1
+            wid_i += 1
+        elif ran_clue < wid_clue:
+            # ran comes first in alphabet, therefore increase it
+            ran_i += 1
+        else:
+            wid_i += 1
+
+
 if __name__ == "__main__":
-    main()
+    if sys.argv[1] == "sort":
+        main()
+    else:
+        find_match()

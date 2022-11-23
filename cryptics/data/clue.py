@@ -130,10 +130,9 @@ class Clue:
 
 
 # clue = Clue(
-#     "the middle of this sentence",
-#     "of",
-#     "'of' is the middle word",
-#     "the middle word is 'of'",
+#     "School with American vowel sound? (5)",
+#     "SCHWA",
+#     "SCH (school) W (with) A (American)",
 # )
 # print(clue.convert_to_feature(True, False, True, False))  # I -> OR
 # print(clue.convert_to_feature(False, True, True, True))  # IR -> O
